@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
+import { toast } from "react-toastify";
 
 const AddReview = () => {
   const { user } = useContext(AuthContext);
@@ -12,9 +13,10 @@ const AddReview = () => {
     const description = form.description.value;
     const gameTitle = form.gameTitle.value;
     const gameCoverUrl = form.gameCoverUrl.value;
+    const year = form.year.value;
     const email = user.email;
     const name = user.displayName;
-    const review = {email, name, genre, rating, description, gameTitle, gameCoverUrl };
+    const review = {email, name, genre, rating, description, gameTitle, gameCoverUrl,year };
 
     // sending to server
     fetch("http://localhost:3000/reviews",{
@@ -25,12 +27,12 @@ const AddReview = () => {
         body: JSON.stringify(review)
     })
     .then(res => res.json())
-    .then(data => {
-        console.log(data);
-        alert("Review Submitted Successfully!");
+    .then((data) => {
+        if(data.acknowledged){
+          toast.success('Review submitted successfully')
+        }
     })
-    
-    // Add logic to save the form data to a database (e.g., using an API call)
+  
   };
 
   return (

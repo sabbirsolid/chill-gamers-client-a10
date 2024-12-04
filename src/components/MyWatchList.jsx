@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const MyWatchList = () => {
   const { user } = useContext(AuthContext);
@@ -14,19 +15,35 @@ const MyWatchList = () => {
       });
   }, [user.email]);
 
-  const handleDelete = (reviewId) => {
-    if (window.confirm("Are you sure you want to delete this review?")) {
-      fetch(`http://localhost:3000/reviews/${reviewId}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.success) {
-            setMyWatchList(myWatchList.filter((review) => review.id !== reviewId));
-            alert("Review deleted successfully!");
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/watchlist/${id}`,{
+          method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(data => {
+          if(data.deletedCount > 0){
+            
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success"
+            });
+          const remainingWatchable = myWatchList.filter(review => review._id !== id);
+            setMyWatchList(remainingWatchable);
           }
-        });
-    }
+        })
+      }
+    });
   };
 
   return (
@@ -73,7 +90,7 @@ const MyWatchList = () => {
               <td className="px-4 py-2 md:px-6 md:py-3 text-center">
                 <button
                   className="px-3 py-1 text-sm text-white bg-red-500 hover:bg-red-600 rounded"
-                  onClick={() => handleDelete(game.id)}
+                  onClick={() => handleDelete(game._id)}
                 >
                   Delete
                 </button>

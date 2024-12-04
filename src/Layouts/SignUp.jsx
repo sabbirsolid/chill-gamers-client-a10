@@ -1,117 +1,173 @@
-import { useContext } from "react";
+
+
+import { useContext, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import { updateProfile } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { toast } from "react-toastify";
 import { auth } from "../Firebase/firebase.config";
+import { updateProfile } from "firebase/auth";
 
 const SignUp = () => {
-    const {createUserWithEmail,signInWithGoogle} = useContext(AuthContext);
-    const handleSignUp = (e ) => {
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const name = form.name.value;
-        const password = form.password.value;
-        const photo = form.photoURL.value;
-        // console.log(email, password, name, photo);
-        createUserWithEmail(email, password)
-        .then(result => {
-            console.log(result.user);
-            updateProfile(auth.currentUser, { displayName: name, photoURL: photo})
-            .then(() => {
-                console.log('created successfully');
-            })
-            .catch(err => {
-                console.log(err.message);
-            })
-        })
-        .catch(error => {
-            console.log(error.message);
-        })
+  const { createUserWithEmail, signInWithGoogle, loading } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const name = form.name.value;
+    const photo = form.PhotoURL.value;
+
+    // Combined validation for uppercase and lowercase
+    if (!/^(?=.*[a-z])(?=.*[A-Z]).+$/.test(password)) {
+      setError("Password must contain at least one uppercase and one lowercase letter.");
+      return;
     }
-   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-sm">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-          Register
-        </h2>
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long.");
+      return;
+    }
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
 
-       <form onSubmit={handleSignUp}>
-         {/* Name Input */}
-         <div className="mb-4">
-          <label
-            htmlFor="name"
-            className="block text-gray-700 text-sm font-semibold mb-2"
-          >
-            Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Enter your name"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
+    if (loading) {
+      return (
+        <div className="flex justify-center items-center min-h-screen bg-gray-50">
+          <span className="loading loading-spinner text-info text-5xl"></span>
         </div>
+      );
+    }
 
-        {/* Photo URL Input */}
-        <div className="mb-4">
-          <label
-            htmlFor="photoUrl"
-            className="block text-gray-700 text-sm font-semibold mb-2"
+    setError(""); // Clear error if the password is valid
+
+    // Create user and update profile info
+    createUserWithEmail(email, password)
+      .then(() => {
+        updateProfile(auth.currentUser, { displayName: name, photoURL: photo })
+          .then(() => {
+            navigate("/");
+            toast.success("Successfully Created!");
+            form.reset();
+          })
+          .catch((error) => {
+            setError(`Failed to update profile: ${error.message}`);
+          });
+      })
+      .catch((error) => {
+        setError(`Failed to register: ${error.message}`);
+      });
+  };
+
+  const handleSignInWithGoogle = () => {
+    signInWithGoogle()
+      .then(() => {
+        toast.success("Successfully Logged In");
+        navigate("/");
+      })
+      .catch(() => {
+        toast.error(`Error: ${error.message}`);
+      });
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
+        <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Sign Up</h2>
+        {error && <p className="text-red-600 mb-4 text-center">{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label htmlFor="name" className="block text-gray-700 text-sm font-semibold mb-2">Full Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Enter your full name"
+              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-gray-700 text-sm font-semibold mb-2">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Enter your email"
+              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-gray-700 text-sm font-semibold mb-2">Password</label>
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                id="password"
+                placeholder="Enter your password"
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button
+                type="button"
+                className="absolute top-3 right-3"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="confirmPassword" className="block text-gray-700 text-sm font-semibold mb-2">Confirm Password</label>
+            <div className="relative">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                name="confirmPassword"
+                id="confirmPassword"
+                placeholder="Confirm your password"
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              <button
+                type="button"
+                className="absolute top-3 right-3"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
+          </div>
+
+          <div className="mb-6 text-right">
+            <a href="/forgot-password" className="text-sm text-blue-500 hover:underline">Forgot Password?</a>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300"
+            disabled={loading}
           >
-            Photo URL
-          </label>
-          <input
-            type="text"
-            id="photoUrl"
-            name="photoURL"
-            placeholder="Enter your photo URL"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-        </div>
+            Sign Up
+          </button>
+        </form>
 
-        {/* Email Input */}
-        <div className="mb-4">
-          <label
-            htmlFor="email"
-            className="block text-gray-700 text-sm font-semibold mb-2"
-          >
-            Email
-          </label>
-          <input
-            name="email"
-            type="email"
-            id="email"
-            placeholder="Enter your email"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-        </div>
-
-        {/* Password Input */}
-        <div className="mb-6">
-          <label
-            htmlFor="password"
-            className="block text-gray-700 text-sm font-semibold mb-2"
-          >
-            Password
-          </label>
-          <input
-            name="password"
-            type="password"
-            id="password"
-            placeholder="Enter your password"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-        </div>
-
-        {/* Register Button */}
-        <button className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">
-          Register
-        </button>
-       </form>
-
-        {/* Google Register Button */}
-        <button onClick={signInWithGoogle} className="w-full flex items-center justify-center bg-base-200 text-white py-2 rounded-lg hover:bg-gray-600 transition mt-4">
+        <button
+          onClick={handleSignInWithGoogle}
+          className="w-full flex items-center justify-center bg-gray-100 text-gray-700 py-3 rounded-lg hover:bg-gray-200 transition mt-4"
+        >
           <svg
             className="w-5 h-5 mr-2"
             xmlns="http://www.w3.org/2000/svg"
@@ -138,12 +194,11 @@ const SignUp = () => {
           Sign up with Google
         </button>
 
-        {/* Login Link */}
         <p className="mt-6 text-center text-sm text-gray-600">
           Already have an account?{" "}
-          <a href="/login" className="text-blue-500 hover:underline">
-            Login
-          </a>
+          <Link to="/login" className="text-blue-500 hover:underline">
+            Login here
+          </Link>
         </p>
       </div>
     </div>
