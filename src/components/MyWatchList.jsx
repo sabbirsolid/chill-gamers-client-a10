@@ -1,22 +1,39 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import { Link } from "react-router-dom";
-const MyReview = () => {
-    const {user} = useContext(AuthContext)
-    const [myReviews, setMyReview] = useState([])
-    useEffect(() => {
-        fetch(`http://localhost:3000/reviews`)
-            .then(res => res.json())
-            .then(data => {
-                const temp = data?.filter(
-                    review => review.email === user?.email
-                );
-                setMyReview(temp);
-            });
-    }, [user.email]);
-    // console.log(myReview);
-    return (
-        <div className="overflow-x-auto">
+
+const MyWatchList = () => {
+  const { user } = useContext(AuthContext);
+  const [myWatchList, setMyWatchList] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/watchlist`)
+      .then((res) => res.json())
+      .then((data) => {
+        const temp = data?.filter((review) => review.email === user?.email);
+        setMyWatchList(temp);
+      });
+  }, [user.email]);
+
+  const handleDelete = (reviewId) => {
+    if (window.confirm("Are you sure you want to delete this review?")) {
+      fetch(`http://localhost:3000/reviews/${reviewId}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            setMyWatchList(myWatchList.filter((review) => review.id !== reviewId));
+            alert("Review deleted successfully!");
+          }
+        });
+    }
+  };
+
+  return (
+    <div className="overflow-x-auto">
+      <h2 className="text-xl md:text-2xl font-bold text-center text-gray-800 my-6">
+        My Reviews
+      </h2>
       <table className="min-w-full bg-white border border-gray-200">
         <thead>
           <tr className="bg-gray-100 text-sm md:text-base">
@@ -29,47 +46,34 @@ const MyReview = () => {
             <th className="px-4 py-2 md:px-6 md:py-3 text-left font-medium text-gray-700">
               Rating
             </th>
-            <th className="px-4 py-2 md:px-6 md:py-3 text-left font-medium text-gray-700 hidden sm:table-cell">
-              Email
-            </th>
             <th className="px-4 py-2 md:px-6 md:py-3 text-center font-medium text-gray-700">
               Actions
             </th>
           </tr>
         </thead>
         <tbody>
-          {myReviews.map((review, index) => (
+          {myWatchList.map((game, index) => (
             <tr
               key={index}
               className="border-t hover:bg-gray-50 transition duration-150 text-sm md:text-base"
             >
               {/* Game Title */}
               <td className="px-4 py-2 md:px-6 md:py-3 text-gray-800">
-                {review.gameTitle}
+                {game.gameTitle}
               </td>
               {/* Genre */}
               <td className="px-4 py-2 md:px-6 md:py-3 text-gray-600">
-                {review.genre}
+                {game.genre}
               </td>
               {/* Rating */}
               <td className="px-4 py-2 md:px-6 md:py-3 text-gray-600">
-                {review.rating}/10
-              </td>
-              {/* Email (hidden on small screens) */}
-              <td className="px-4 py-2 md:px-6 md:py-3 text-gray-600 hidden sm:table-cell">
-                {review.email}
+                {game.rating}/10
               </td>
               {/* Actions */}
               <td className="px-4 py-2 md:px-6 md:py-3 text-center">
-                <Link to={`/updateReview/${review._id}`}
-                  className="px-2 md:px-3 py-1 text-xs md:text-sm text-white bg-blue-500 hover:bg-blue-600 rounded mr-1 md:mr-2"
-                  onClick={() => onEdit(review)}
-                >
-                  Edit
-                </Link>
                 <button
-                  className="px-2 md:px-3 py-1 text-xs md:text-sm text-white bg-red-500 hover:bg-red-600 rounded"
-                  onClick={() => onDelete(review)}
+                  className="px-3 py-1 text-sm text-white bg-red-500 hover:bg-red-600 rounded"
+                  onClick={() => handleDelete(game.id)}
                 >
                   Delete
                 </button>
@@ -79,7 +83,7 @@ const MyReview = () => {
         </tbody>
       </table>
     </div>
-    );
+  );
 };
 
-export default MyReview;
+export default MyWatchList;

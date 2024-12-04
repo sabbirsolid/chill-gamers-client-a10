@@ -7,7 +7,10 @@ import SignUp from "../Layouts/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import AddReview from "../components/AddReview";
 import MyReview from "../components/MyReview";
-import GameWatchList from "../components/GameWatchList";
+import AllReviews from "../components/AllReviews";
+import ReviewDetails from "../components/ReviewDetails";
+import MyWatchList from "../components/MyWatchList";
+import UpdateReview from "../Layouts/UpdateReview";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +29,11 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <SignUp></SignUp>,
       },
+      {
+        path: "/reviews",
+        element: <AllReviews></AllReviews>,
+        loader: () => fetch("http://localhost:3000/reviews"),
+      },
     ],
   },
   {
@@ -33,6 +41,14 @@ const router = createBrowserRouter([
     element: (
       <PrivateRoute>
         <AddReview></AddReview>
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/private/gameWatchList",
+    element: (
+      <PrivateRoute>
+        <MyWatchList></MyWatchList>
       </PrivateRoute>
     ),
   },
@@ -45,12 +61,22 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/private/gameWatchList",
+    path: "/review/:id",
     element: (
       <PrivateRoute>
-        <GameWatchList></GameWatchList>
+        <ReviewDetails></ReviewDetails>,
       </PrivateRoute>
     ),
+    loader: ({ params }) => fetch(`http://localhost:3000/reviews/${params.id}`),
+  },
+  {
+    path: "/updateReview/:id",
+    element: (
+      <PrivateRoute>
+        <UpdateReview></UpdateReview>
+      </PrivateRoute>
+    ),
+    loader: ({ params }) => fetch(`http://localhost:3000/reviews/${params.id}`),
   },
   {
     path: "*",
