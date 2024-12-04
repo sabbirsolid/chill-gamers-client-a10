@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       {
         path: "/reviews",
         element: <AllReviews></AllReviews>,
-        loader: () => fetch("http://localhost:3000/reviews"),
+        loader: () => fetch("https://game-lens-server.vercel.app/reviews"),
       },
     ],
   },
@@ -66,7 +66,8 @@ const router = createBrowserRouter([
         <ReviewDetails></ReviewDetails>,
       </PrivateRoute>
     ),
-    loader: ({ params }) => fetch(`http://localhost:3000/reviews/${params.id}`),
+    loader: ({ params }) =>
+      fetch(`https://game-lens-server.vercel.app/reviews/${params.id}`),
   },
   {
     path: "/updateReview/:id",
@@ -75,7 +76,8 @@ const router = createBrowserRouter([
         <UpdateReview></UpdateReview>
       </PrivateRoute>
     ),
-    loader: ({ params }) => fetch(`http://localhost:3000/reviews/${params.id}`),
+    loader: ({ params }) =>
+      fetch(`https://game-lens-server.vercel.app/reviews/${params.id}`),
   },
   {
     path: "*",

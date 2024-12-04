@@ -6,7 +6,7 @@ const UpcomingReleases = () => {
 
   useEffect(() => {
     // Fetch upcoming games from your backend or API
-    fetch("http://localhost:3000/reviews")
+    fetch("https://game-lens-server.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => setUpcomingGames(data))
       .catch((error) => console.error("Error fetching upcoming games:", error));
@@ -41,8 +41,7 @@ const UpcomingReleases = () => {
                   {Math.max(
                     0,
                     Math.ceil(
-                      (new Date(game.year) - new Date()) /
-                        (1000 * 60 * 60 * 24)
+                      (new Date(game.year) - new Date()) / (1000 * 60 * 60 * 24)
                     )
                   )}{" "}
                   days to go

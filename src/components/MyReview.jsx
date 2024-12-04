@@ -3,52 +3,51 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 const MyReview = () => {
-    const {user} = useContext(AuthContext)
-    const [myReviews, setMyReview] = useState([])
-    useEffect(() => {
-        fetch(`http://localhost:3000/reviews`)
-            .then(res => res.json())
-            .then(data => {
-                const temp = data?.filter(
-                    review => review.email === user?.email
-                );
-                setMyReview(temp);
-            });
-    }, [user.email]);
+  const { user } = useContext(AuthContext);
+  const [myReviews, setMyReview] = useState([]);
+  useEffect(() => {
+    fetch(`https://game-lens-server.vercel.app/reviews`)
+      .then((res) => res.json())
+      .then((data) => {
+        const temp = data?.filter((review) => review.email === user?.email);
+        setMyReview(temp);
+      });
+  }, [user.email]);
 
-    // deleting an item
-    const handleDelete = (id) => {
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      }).then((result) => {
-        if (result.isConfirmed) {
-          fetch(`http://localhost:3000/reviews/${id}`,{
-            method: "DELETE"
-          })
-          .then(res => res.json())
-          .then(data => {
-            if(data.deletedCount > 0){
-              
+  // deleting an item
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://game-lens-server.vercel.app/reviews/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",
-                icon: "success"
+                icon: "success",
               });
-              const remainingReviews = myReviews.filter(review => review._id !== id);
+              const remainingReviews = myReviews.filter(
+                (review) => review._id !== id
+              );
               setMyReview(remainingReviews);
             }
-          })
-        }
-      });
-    }
-    return (
-        <div className="overflow-x-auto">
+          });
+      }
+    });
+  };
+  return (
+    <div className="overflow-x-auto">
       <table className="min-w-full bg-white border border-gray-200">
         <thead>
           <tr className="bg-gray-100 text-sm md:text-base">
@@ -93,13 +92,15 @@ const MyReview = () => {
               </td>
               {/* Actions */}
               <td className="px-4 py-2 md:px-6 md:py-3 text-center">
-                <Link to={`/updateReview/${review._id}`}
-                  className="px-2 md:px-3 py-1 text-xs md:text-sm text-white bg-blue-500 hover:bg-blue-600 rounded mr-1 md:mr-2" >
+                <Link
+                  to={`/updateReview/${review._id}`}
+                  className="px-2 md:px-3 py-1 text-xs md:text-sm text-white bg-blue-500 hover:bg-blue-600 rounded mr-1 md:mr-2"
+                >
                   Edit
                 </Link>
-                <button onClick={() => handleDelete(review._id)}
+                <button
+                  onClick={() => handleDelete(review._id)}
                   className="px-2 md:px-3 py-1 text-xs md:text-sm text-white bg-red-500 hover:bg-red-600 rounded"
-                  
                 >
                   Delete
                 </button>
@@ -109,7 +110,7 @@ const MyReview = () => {
         </tbody>
       </table>
     </div>
-    );
+  );
 };
 
 export default MyReview;

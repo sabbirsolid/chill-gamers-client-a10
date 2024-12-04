@@ -3,7 +3,6 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
-import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,11 +12,11 @@ const Navbar = () => {
   const handleLogOut = () => {
     logOut()
       .then(() => {
-        toast.success("Sign out successful");
+        alert("Sign out successful");
         navigate("/"); 
       })
       .catch((err) => {
-        toast.error(err.message);
+        alert(err.message);
       });
   };
 

@@ -2,7 +2,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+
 
 const Login = () => {
   const { logIn, signInWithGoogle, loading } = useContext(AuthContext);
@@ -15,11 +15,11 @@ const Login = () => {
     const password = form.password.value;
     logIn(email, password)
       .then(() => {
-        toast.success("Login Successful")
+        alert("Login Successful")
         navigate("/"); // Redirect to home or desired path
       })
       .catch(() => {
-        toast.error("Login Failed")
+        alert("Login Failed")
       });
   };
 
@@ -27,11 +27,11 @@ const Login = () => {
   const handleSignInWithGoogle = () => {
     signInWithGoogle()
       .then(() => {
-        toast.success("Successfully Logged In");
+        alert("Successfully Logged In");
         navigate("/");
       })
       .catch((error) => {
-        toast.error(`Failed to Login: ${error.message}`);
+        alert(`Failed to Login: ${error.message}`);
       });
   };
 

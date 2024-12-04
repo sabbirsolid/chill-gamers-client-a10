@@ -7,7 +7,7 @@ const HighestRated = () => {
 
   useEffect(() => {
     // Fetch highest-rated games
-    fetch("http://localhost:3000/topRated")
+    fetch("https://game-lens-server.vercel.app/topRated")
       .then((res) => res.json())
       .then((data) => {
         setGames(data);
@@ -54,7 +54,9 @@ const HighestRated = () => {
                         : "text-gray-300"
                     }`}
                   />
-                  <span className="ml-2 text-sm text-gray-500">{game.rating}/10</span>
+                  <span className="ml-2 text-sm text-gray-500">
+                    {game.rating}/10
+                  </span>
                 </div>
                 {/* Game Description */}
                 <p className="text-sm text-gray-700 truncate max-h-24 overflow-hidden mb-6">

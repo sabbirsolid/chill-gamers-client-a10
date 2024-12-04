@@ -2,45 +2,54 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 
-
 const UpdateReview = () => {
-    const loadedData = useLoaderData();
-    const {user} = useContext(AuthContext)
-   const {genre, rating, description, gameTitle, gameCoverUrl,year } = loadedData;
-    const genres = ["Action", "RPG", "Adventure", "Sports", "Puzzle", "Shooter"];
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const genre = form.genre.value;
-        const rating = form.rating.value;
-        const description = form.description.value;
-        const gameTitle = form.gameTitle.value;
-        const gameCoverUrl = form.gameCoverUrl.value;
-        const year = form.year.value;
-        const email = user.email;
-        const name = user.displayName;
-        const updatedReview = {email, name, genre, rating, description, gameTitle, gameCoverUrl, year };
-        // updating info
-        fetch(`http://localhost:3000/reviews/${loadedData._id}`,{
-            method: "PATCH",
-            headers: {
-                'content-type' : 'application/json'
-            },
-            body: JSON.stringify(updatedReview)
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.modifiedCount >0){
-                alert('modified successfully')
-            }
-        })
-        .catch((error) => {
-            console.error("Error updating review:", error);
-        });
-    }
+  const loadedData = useLoaderData();
+  const { user } = useContext(AuthContext);
+  const { genre, rating, description, gameTitle, gameCoverUrl, year } =
+    loadedData;
+  const genres = ["Action", "RPG", "Adventure", "Sports", "Puzzle", "Shooter"];
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const genre = form.genre.value;
+    const rating = form.rating.value;
+    const description = form.description.value;
+    const gameTitle = form.gameTitle.value;
+    const gameCoverUrl = form.gameCoverUrl.value;
+    const year = form.year.value;
+    const email = user.email;
+    const name = user.displayName;
+    const updatedReview = {
+      email,
+      name,
+      genre,
+      rating,
+      description,
+      gameTitle,
+      gameCoverUrl,
+      year,
+    };
+    // updating info
+    fetch(`https://game-lens-server.vercel.app/reviews/${loadedData._id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedReview),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          alert("modified successfully");
+        }
+      })
+      .catch((error) => {
+        console.error("Error updating review:", error);
+      });
+  };
 
-    return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
           Add New Review
@@ -74,7 +83,7 @@ const UpdateReview = () => {
               Game Title
             </label>
             <input
-            defaultValue={gameTitle}
+              defaultValue={gameTitle}
               type="text"
               id="gameTitle"
               name="gameTitle"
@@ -93,7 +102,7 @@ const UpdateReview = () => {
               Review Description
             </label>
             <textarea
-            defaultValue={description}
+              defaultValue={description}
               id="description"
               name="description"
               placeholder="Write your detailed review"
@@ -112,7 +121,7 @@ const UpdateReview = () => {
               Rating (1-10)
             </label>
             <input
-            defaultValue={rating}
+              defaultValue={rating}
               type="number"
               id="rating"
               name="rating"
@@ -133,7 +142,7 @@ const UpdateReview = () => {
               Publishing Year
             </label>
             <input
-            defaultValue={year}
+              defaultValue={year}
               type="number"
               id="publishingYear"
               name="year"
@@ -211,7 +220,7 @@ const UpdateReview = () => {
         </form>
       </div>
     </div>
-    );
+  );
 };
 
 export default UpdateReview;

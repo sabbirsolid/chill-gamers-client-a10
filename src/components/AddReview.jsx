@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import { toast } from "react-toastify";
 
 const AddReview = () => {
   const { user } = useContext(AuthContext);
@@ -16,23 +15,31 @@ const AddReview = () => {
     const year = form.year.value;
     const email = user.email;
     const name = user.displayName;
-    const review = {email, name, genre, rating, description, gameTitle, gameCoverUrl,year };
+    const review = {
+      email,
+      name,
+      genre,
+      rating,
+      description,
+      gameTitle,
+      gameCoverUrl,
+      year,
+    };
 
     // sending to server
-    fetch("http://localhost:3000/reviews",{
-        method: "POST",
-        headers: {
-            "content-type" : "application/json"
-        },
-        body: JSON.stringify(review)
+    fetch("https://game-lens-server.vercel.app/reviews", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(review),
     })
-    .then(res => res.json())
-    .then((data) => {
-        if(data.acknowledged){
-          toast.success('Review submitted successfully')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          alert("Review submitted successfully");
         }
-    })
-  
+      });
   };
 
   return (

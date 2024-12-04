@@ -6,7 +6,7 @@ const TrendingGames = () => {
 
   useEffect(() => {
     // Fetch trending games from your backend or API
-    fetch("http://localhost:3000/reviews")
+    fetch("https://game-lens-server.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => setTrendingGames(data))
       .catch((error) => console.error("Error fetching trending games:", error));

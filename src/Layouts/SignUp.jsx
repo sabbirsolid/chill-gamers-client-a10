@@ -4,7 +4,6 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { toast } from "react-toastify";
 import { auth } from "../Firebase/firebase.config";
 import { updateProfile } from "firebase/auth";
 
@@ -54,7 +53,7 @@ const SignUp = () => {
         updateProfile(auth.currentUser, { displayName: name, photoURL: photo })
           .then(() => {
             navigate("/");
-            toast.success("Successfully Created!");
+            alert("Successfully Created!");
             form.reset();
           })
           .catch((error) => {
@@ -69,11 +68,11 @@ const SignUp = () => {
   const handleSignInWithGoogle = () => {
     signInWithGoogle()
       .then(() => {
-        toast.success("Successfully Logged In");
+        alert("Successfully Logged In");
         navigate("/");
       })
       .catch(() => {
-        toast.error(`Error: ${error.message}`);
+        alert(`Error: ${error.message}`);
       });
   };
 

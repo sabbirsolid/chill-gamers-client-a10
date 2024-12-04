@@ -7,7 +7,7 @@ const MyWatchList = () => {
   const [myWatchList, setMyWatchList] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/watchlist`)
+    fetch(`https://game-lens-server.vercel.app/watchlist`)
       .then((res) => res.json())
       .then((data) => {
         const temp = data?.filter((review) => review.email === user?.email);
@@ -23,25 +23,26 @@ const MyWatchList = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/watchlist/${id}`,{
-          method: "DELETE"
+        fetch(`https://game-lens-server.vercel.app/watchlist/${id}`, {
+          method: "DELETE",
         })
-        .then(res => res.json())
-        .then(data => {
-          if(data.deletedCount > 0){
-            
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
-              icon: "success"
-            });
-          const remainingWatchable = myWatchList.filter(review => review._id !== id);
-            setMyWatchList(remainingWatchable);
-          }
-        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+              const remainingWatchable = myWatchList.filter(
+                (review) => review._id !== id
+              );
+              setMyWatchList(remainingWatchable);
+            }
+          });
       }
     });
   };
