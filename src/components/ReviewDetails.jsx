@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const ReviewDetails = () => {
   const review = useLoaderData();
@@ -20,12 +21,6 @@ const ReviewDetails = () => {
     gameCoverUrl,
   };
 
-  // Fetch watchlist when component loads
-  // useEffect(() => {
-  //     fetch(`https://game-lens-server.vercel.app/watchlist?email=${email}`)
-  //         .then(res => res.json())
-  //         .then(data => setWatchList(data));
-  // }, [email]);
   useEffect(() => {
     fetch(`https://game-lens-server.vercel.app/watchlist`)
       .then((res) => res.json())
@@ -39,7 +34,12 @@ const ReviewDetails = () => {
     );
 
     if (isDuplicate) {
-      alert("This game is already in your watchlist!");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "This game is already in your watch list!",
+        showConfirmButton: true,
+      });
       return;
     }
 
@@ -53,13 +53,19 @@ const ReviewDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
-          alert("successfully added to the watch List");
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Successfully added to your watch list",
+            showConfirmButton: true,
+          });
           setWatchList((prev) => [...prev, watchItem]);
         }
       });
   };
+
   return (
-    <div className="max-w-sm mx-auto">
+    <div className="max-w-sm mx-auto mt-6"> {/* Added mt-6 for gap */}
       <div className="bg-white shadow-lg rounded-md overflow-hidden flex flex-col h-full transform transition-transform hover:scale-105 duration-300">
         {/* Game Cover */}
         <div className="relative">
@@ -93,8 +99,8 @@ const ReviewDetails = () => {
           <p className="text-sm text-gray-700">
             <strong>Rating:</strong> {review.rating}/10
           </p>
-          {/* Description */}
-          <p className="text-sm text-gray-600 truncate">{review.description}</p>
+          {/* Full Description (no truncation) */}
+          <p className="text-sm text-gray-600">{review.description}</p> {/* Removed truncate class */}
         </div>
 
         {/* Add to Watch List Button */}

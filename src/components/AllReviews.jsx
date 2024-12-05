@@ -1,15 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 
 const AllReviews = () => {
-  const data = useLoaderData();
-  const [reviews, setReviews] = useState(data);
+  const data = useLoaderData(); // Assuming data is being loaded initially
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true); // Loading state
   const [selectedGenre, setSelectedGenre] = useState("");
   const [sortCriteria, setSortCriteria] = useState("rating");
   const [sortOrder, setSortOrder] = useState("asc");
 
   const genres = ["Action", "RPG", "Adventure", "Sports", "Puzzle", "Shooter"];
+
+  useEffect(() => {
+    // Simulating async data fetching
+    setTimeout(() => {
+      setReviews(data); // Set data once loaded
+      setLoading(false); // Set loading to false
+    }, 500); // Adjust the delay as per your API or loader behavior
+  }, [data]);
 
   const handleGenreChange = (e) => {
     setSelectedGenre(e.target.value);
@@ -37,6 +46,14 @@ const AllReviews = () => {
       return compareValueB - compareValueA;
     }
   });
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <div className="loading loading-spinner text-info text-5xl"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 py-10">

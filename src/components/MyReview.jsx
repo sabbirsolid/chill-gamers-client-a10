@@ -3,7 +3,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 const MyReview = () => {
-  const { user } = useContext(AuthContext);
+  const { user,loading } = useContext(AuthContext);
   const [myReviews, setMyReview] = useState([]);
   useEffect(() => {
     fetch(`https://game-lens-server.vercel.app/reviews`)
@@ -46,6 +46,13 @@ const MyReview = () => {
       }
     });
   };
+  if (loading) {
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <div className="loading loading-spinner text-info text-5xl"></div>
+      </div>
+    );
+  }
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full bg-white border border-gray-200">

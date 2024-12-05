@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,11 +13,21 @@ const Navbar = () => {
   const handleLogOut = () => {
     logOut()
       .then(() => {
-        alert("Sign out successful");
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Sign Out successful",
+          showConfirmButton: true,
+        });
         navigate("/"); 
       })
       .catch((err) => {
-        alert(err.message);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.message || "Something went wrong! Please try again.",
+          showConfirmButton: true,
+        });
       });
   };
 

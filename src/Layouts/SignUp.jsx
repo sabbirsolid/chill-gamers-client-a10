@@ -1,11 +1,10 @@
-
-
 import { useContext, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { auth } from "../Firebase/firebase.config";
 import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { createUserWithEmail, signInWithGoogle, loading } = useContext(AuthContext);
@@ -21,7 +20,7 @@ const SignUp = () => {
     const form = event.target;
     const email = form.email.value;
     const name = form.name.value;
-    const photo = form.PhotoURL.value;
+    const photo = form.photoURL.value;
 
     // Combined validation for uppercase and lowercase
     if (!/^(?=.*[a-z])(?=.*[A-Z]).+$/.test(password)) {
@@ -53,7 +52,12 @@ const SignUp = () => {
         updateProfile(auth.currentUser, { displayName: name, photoURL: photo })
           .then(() => {
             navigate("/");
-            alert("Successfully Created!");
+            Swal.fire({
+              position: "top-center",
+              icon: "success",
+              title: "You have successfully created an account",
+              showConfirmButton: true,
+            });
             form.reset();
           })
           .catch((error) => {
@@ -68,11 +72,16 @@ const SignUp = () => {
   const handleSignInWithGoogle = () => {
     signInWithGoogle()
       .then(() => {
-        alert("Successfully Logged In");
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "You have successfully created an account",
+          showConfirmButton: true,
+        });
         navigate("/");
       })
       .catch(() => {
-        alert(`Error: ${error.message}`);
+        setError(`Failed to register: ${error.message}`);
       });
   };
 
@@ -101,6 +110,17 @@ const SignUp = () => {
               name="email"
               id="email"
               placeholder="Enter your email"
+              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-semibold mb-2">PhotoURL</label>
+            <input
+              type="photoURL"
+              name="photoURL"
+              id="photoURL"
+              placeholder="Enter your photoURL"
               className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />

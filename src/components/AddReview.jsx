@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddReview = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const genres = ["Action", "RPG", "Adventure", "Sports", "Puzzle", "Shooter"];
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,6 +17,7 @@ const AddReview = () => {
     const year = form.year.value;
     const email = user.email;
     const name = user.displayName;
+
     const review = {
       email,
       name,
@@ -30,17 +33,43 @@ const AddReview = () => {
     fetch("https://game-lens-server.vercel.app/reviews", {
       method: "POST",
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(review),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to submit review. Please try again later.");
+        }
+        return res.json();
+      })
       .then((data) => {
         if (data.acknowledged) {
-          alert("Review submitted successfully");
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Your Review has been saved",
+            showConfirmButton: true,
+          });
         }
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message || "Something went wrong! Please try again.",
+          showConfirmButton: true,
+        });
       });
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <div className="loading loading-spinner text-info text-5xl"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">

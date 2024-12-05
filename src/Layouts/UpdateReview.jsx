@@ -1,50 +1,73 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const UpdateReview = () => {
   const loadedData = useLoaderData();
   const { user } = useContext(AuthContext);
-  const { genre, rating, description, gameTitle, gameCoverUrl, year } =
-    loadedData;
+  const { genre, rating, description, gameTitle, gameCoverUrl, year } = loadedData;
   const genres = ["Action", "RPG", "Adventure", "Sports", "Puzzle", "Shooter"];
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    const genre = form.genre.value;
-    const rating = form.rating.value;
-    const description = form.description.value;
-    const gameTitle = form.gameTitle.value;
-    const gameCoverUrl = form.gameCoverUrl.value;
-    const year = form.year.value;
-    const email = user.email;
-    const name = user.displayName;
-    const updatedReview = {
-      email,
-      name,
-      genre,
-      rating,
-      description,
-      gameTitle,
-      gameCoverUrl,
-      year,
+
+    // Collecting form data
+    const updatedData = {
+      genre: form.genre.value,
+      rating: form.rating.value,
+      description: form.description.value,
+      gameTitle: form.gameTitle.value,
+      gameCoverUrl: form.gameCoverUrl.value,
+      year: form.year.value,
+      email: user.email,
+      name: user.displayName,
     };
-    // updating info
+
+    // Checking if any changes were made
+    const isUnchanged =
+      updatedData.genre === genre &&
+      updatedData.rating === rating &&
+      updatedData.description === description &&
+      updatedData.gameTitle === gameTitle &&
+      updatedData.gameCoverUrl === gameCoverUrl &&
+      updatedData.year === year;
+
+    if (isUnchanged) {
+      Swal.fire({
+        icon: "info",
+        title: "No Changes Detected",
+        text: "All information is unchanged.",
+      });
+      return;
+    }
+
+    // Proceeding with the update
     fetch(`https://game-lens-server.vercel.app/reviews/${loadedData._id}`, {
       method: "PATCH",
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(updatedReview),
+      body: JSON.stringify(updatedData),
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
-          alert("modified successfully");
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Your Review has been Updated!",
+            showConfirmButton: true,
+          });
         }
       })
-      .catch((error) => {
-        console.error("Error updating review:", error);
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
       });
   };
 
@@ -52,7 +75,7 @@ const UpdateReview = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-          Add New Review
+          Update your Review
         </h2>
 
         <form onSubmit={handleSubmit}>
@@ -215,7 +238,7 @@ const UpdateReview = () => {
             type="submit"
             className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
           >
-            Submit Review
+            Update
           </button>
         </form>
       </div>

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { logIn, signInWithGoogle, loading } = useContext(AuthContext);
@@ -19,22 +20,42 @@ const Login = () => {
 
     try {
       await logIn(email, password);
-      alert("Login Successful");
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "You Logged in successfully!",
+        showConfirmButton: true,
+      });
       navigate(from, { replace: true });
       // location?.state? location.state : "/"; // Redirect to the intended route;
     } catch (error) {
-      alert(`Login Failed: ${error.message}`);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error.message || "Something went wrong! Please try again.",
+        showConfirmButton: true,
+      });
     }
   };
 
   const handleSignInWithGoogle = async () => {
     try {
       await signInWithGoogle();
-      alert("Successfully Logged In");
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "You Logged in successfully!",
+        showConfirmButton: true,
+      });
       navigate(from, { replace: true });
       // location?.state? location.state : navigate('/');
     } catch (error) {
-      alert(`Failed to Login: ${error.message}`);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error.message || "Something went wrong! Please try again.",
+        showConfirmButton: true,
+      });
     }
   };
 

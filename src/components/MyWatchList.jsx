@@ -3,7 +3,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const MyWatchList = () => {
-  const { user } = useContext(AuthContext);
+  const { user,loading } = useContext(AuthContext);
   const [myWatchList, setMyWatchList] = useState([]);
 
   useEffect(() => {
@@ -46,6 +46,14 @@ const MyWatchList = () => {
       }
     });
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <div className="loading loading-spinner text-info text-5xl"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="overflow-x-auto">
