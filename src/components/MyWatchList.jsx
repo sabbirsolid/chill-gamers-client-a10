@@ -56,23 +56,23 @@ const MyWatchList = () => {
   }
 
   return (
-    <div className="overflow-x-auto">
-      <h2 className="text-xl md:text-2xl font-bold text-center text-gray-800 my-6">
-        My Reviews
+    <div className="overflow-x-auto m-3 lg:m-10 border rounded-xl">
+      <h2 className="text-xl md:text-2xl font-bold text-center my-6">
+        My Watch List
       </h2>
-      <table className="min-w-full bg-white border border-gray-200">
+      <table className="min-w-full  border border-gray-200">
         <thead>
-          <tr className="bg-gray-100 text-sm md:text-base">
-            <th className="px-4 py-2 md:px-6 md:py-3 text-left font-medium text-gray-700">
+          <tr className=" text-sm md:text-base">
+            <th className="px-4 py-2 md:px-6 md:py-3 text-left font-medium ">
               Game Title
             </th>
-            <th className="px-4 py-2 md:px-6 md:py-3 text-left font-medium text-gray-700">
+            <th className="px-4 py-2 md:px-6 md:py-3 text-left font-medium ">
               Genre
             </th>
-            <th className="px-4 py-2 md:px-6 md:py-3 text-left font-medium text-gray-700">
+            <th className="px-4 py-2 md:px-6 md:py-3 text-left font-medium ">
               Rating
             </th>
-            <th className="px-4 py-2 md:px-6 md:py-3 text-center font-medium text-gray-700">
+            <th className="px-4 py-2 md:px-6 md:py-3 text-center font-medium ">
               Actions
             </th>
           </tr>
@@ -84,15 +84,15 @@ const MyWatchList = () => {
               className="border-t hover:bg-gray-50 transition duration-150 text-sm md:text-base"
             >
               {/* Game Title */}
-              <td className="px-4 py-2 md:px-6 md:py-3 text-gray-800">
+              <td className="px-4 py-2 md:px-6 md:py-3 ">
                 {game.gameTitle}
               </td>
               {/* Genre */}
-              <td className="px-4 py-2 md:px-6 md:py-3 text-gray-600">
+              <td className="px-4 py-2 md:px-6 md:py-3 ">
                 {game.genre}
               </td>
               {/* Rating */}
-              <td className="px-4 py-2 md:px-6 md:py-3 text-gray-600">
+              <td className="px-4 py-2 md:px-6 md:py-3 ">
                 {game.rating}/10
               </td>
               {/* Actions */}

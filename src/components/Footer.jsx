@@ -1,11 +1,11 @@
 const Footer = () => {
     return (
-      <footer className=" text-gray-300 py-8">
+      <footer className="py-8">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* About Section */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4">About Chill Gamer</h3>
+              <h3 className="text-lg font-semibold  mb-4">About Chill Gamer</h3>
               <p>
                 Chill Gamer is your trusted platform for honest and insightful reviews of the latest and greatest games. 
                 Join our community of gamers and share your experiences!
@@ -14,7 +14,7 @@ const Footer = () => {
   
             {/* Navigation Links */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
+              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2">
                 <li>
                   <a href="/" className="hover:text-blue-400 transition">Home</a>
@@ -33,7 +33,7 @@ const Footer = () => {
   
             {/* Contact Information */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Contact Us</h3>
+              <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
               <p>
                 <strong>Email:</strong> sabbir@gmail.com
               </p>

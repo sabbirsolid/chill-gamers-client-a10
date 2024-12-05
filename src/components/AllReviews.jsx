@@ -56,8 +56,8 @@ const AllReviews = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10">
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+    <div className="min-h-screen  py-10">
+      <h2 className="text-3xl font-bold text-center mb-6">
         All Reviews
       </h2>
 
@@ -65,7 +65,7 @@ const AllReviews = () => {
       <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center space-y-4 sm:space-y-0 mb-6 px-4 md:px-8">
         {/* Genre Filter */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 w-full sm:w-auto">
-          <label htmlFor="genre" className="font-medium text-gray-700 mb-2 sm:mb-0">
+          <label htmlFor="genre" className="font-medium  mb-2 sm:mb-0">
             Filter by Genre:
           </label>
           <select
@@ -86,7 +86,7 @@ const AllReviews = () => {
         {/* Sorting Options */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 w-full sm:w-auto">
           <div className="lg:flex items-center space-x-2">
-            <label htmlFor="sortCriteria" className="font-medium text-gray-700">
+            <label htmlFor="sortCriteria" className="font-medium ">
               Sort by:
             </label>
             <select
@@ -100,7 +100,7 @@ const AllReviews = () => {
             </select>
           </div>
           <div className="lg:flex items-center space-x-2">
-            <label htmlFor="sortOrder" className="font-medium text-gray-700">
+            <label htmlFor="sortOrder" className="font-medium ">
               Order:
             </label>
             <select
@@ -121,7 +121,7 @@ const AllReviews = () => {
         {sortedReviews.map((review, index) => (
           <div
             key={index}
-            className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col justify-between h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+            className=" shadow-lg rounded-lg overflow-hidden flex flex-col justify-between h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
           >
             {/* Game Cover */}
             <img
@@ -131,15 +131,15 @@ const AllReviews = () => {
             />
             <div className="p-3 flex-grow">
               {/* Game Title */}
-              <h3 className="text-md font-semibold text-gray-800 mb-1 truncate">
+              <h3 className="text-md font-semibold  mb-1 truncate">
                 {review.gameTitle}
               </h3>
               {/* Genre */}
-              <p className="text-gray-600 text-xs mb-1">
+              <p className=" text-xs mb-1">
                 <strong>Genre:</strong> {review.genre}
               </p>
               {/* Year */}
-              <p className="text-gray-600 text-xs mb-1">
+              <p className=" text-xs mb-1">
                 <strong>Year:</strong> {review.year}
               </p>
               {/* Rating */}
@@ -148,11 +148,11 @@ const AllReviews = () => {
                 <span className="ml-1">Rating: {review.rating}/10</span>
               </div>
               {/* Description */}
-              <p className="text-gray-700 text-xs line-clamp-3">
+              <p className=" text-xs line-clamp-3">
                 {review.description}
               </p>
             </div>
-            <div className="p-3 bg-gray-50 text-right">
+            <div className="p-3  text-right">
               <Link
                 to={`/review/${review._id}`}
                 className="px-4 py-2 text-xs text-white bg-gradient-to-r from-teal-400 via-blue-500 to-purple-600 hover:from-teal-500 hover:via-blue-600 hover:to-purple-700 rounded-md focus:outline-none focus:ring focus:ring-blue-300 transition-all"

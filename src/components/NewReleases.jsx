@@ -61,7 +61,7 @@ const NewReleases = () => {
           <Player
             autoplay
             loop={false}
-            src="https://assets10.lottiefiles.com/packages/lf20_dk1kkoiu.json" // Replace this URL with your chosen animation
+            src="https://assets10.lottiefiles.com/packages/lf20_dk1kkoiu.json"
             style={{
               position: "absolute",
               top: "50%",
@@ -80,7 +80,7 @@ const NewReleases = () => {
           {newReleases.slice(currentIndex, currentIndex + 5).map((game) => (
             <div
               key={game._id}
-              className={`bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 animate__animated ${
+              className={`rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 animate__animated ${
                 animationDirection === "next"
                   ? "animate__fadeInRight"
                   : "animate__fadeInLeft"
@@ -92,13 +92,13 @@ const NewReleases = () => {
                 className="w-full h-48 object-cover"
               />
               <div className="p-4">
-                <h3 className="text-lg font-semibold text-gray-800 truncate">
+                <h3 className="text-lg font-semibold  truncate">
                   {game.gameTitle}
                 </h3>
-                <p className="text-gray-600 text-sm mt-1 truncate">
+                <p className=" text-sm mt-1 truncate">
                   {game.genre}
                 </p>
-                <p className="text-gray-600 text-sm mt-2">
+                <p className=" text-sm mt-2">
                   Release Date: {game.releaseDate}
                 </p>
                 <div className="flex gap-2 mt-4">

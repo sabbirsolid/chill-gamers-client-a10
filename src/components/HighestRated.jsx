@@ -23,7 +23,7 @@ const HighestRated = () => {
           {games.map((game) => (
             <div
               key={game._id}
-              className="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl"
+              className="shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl"
             >
               {/* Game Cover */}
               <img
@@ -33,11 +33,11 @@ const HighestRated = () => {
               />
               <div className="p-4">
                 {/* Game Title */}
-                <h3 className="text-lg font-semibold text-gray-800 mb-2 hover:text-indigo-600 transition-colors duration-300">
+                <h3 className="text-lg font-semibold  mb-2 hover:text-indigo-600 transition-colors duration-300">
                   {game.gameTitle}
                 </h3>
                 {/* Game Genre */}
-                <p className="text-sm text-gray-500 mb-2 capitalize">
+                <p className="text-sm mb-2 capitalize">
                   Genre: {game.genre}
                 </p>
                 {/* Rating */}
@@ -53,12 +53,12 @@ const HighestRated = () => {
                         : "text-gray-300"
                     }`}
                   />
-                  <span className="ml-2 text-sm text-gray-500">
+                  <span className="ml-2 text-sm ">
                     {game.rating}/10
                   </span>
                 </div>
                 {/* Game Description */}
-                <p className="text-sm text-gray-700 truncate max-h-24 overflow-hidden mb-6">
+                <p className="text-sm truncate max-h-24 overflow-hidden mb-6">
                   {game.description}
                 </p>
                 {/* Explore Details Button */}

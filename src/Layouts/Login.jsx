@@ -58,15 +58,11 @@ const Login = () => {
       });
     }
   };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600">
-      {loading ? (
-        <div className="flex justify-center items-center min-h-screen bg-gray-50">
-          <span className="loading loading-spinner text-info text-5xl"></span>
-        </div>
-      ) : (
-        <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
           <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">
             Login
           </h2>
@@ -154,7 +150,6 @@ const Login = () => {
             </a>
           </p>
         </div>
-      )}
     </div>
   );
 };

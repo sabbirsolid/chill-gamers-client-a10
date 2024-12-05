@@ -18,10 +18,10 @@ const UpcomingReleases = () => {
         🚀 Upcoming Releases
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4 md:px-8">
-        {upcomingGames.map((game) => (
+        {upcomingGames?.map((game) => (
           <div
             key={game._id}
-            className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+            className=" rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
           >
             <img
               src={game.gameCoverUrl}
@@ -29,10 +29,10 @@ const UpcomingReleases = () => {
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
-              <h3 className="text-lg font-semibold text-gray-800 truncate">
+              <h3 className="text-lg font-semibold truncate">
                 {game.gameTitle}
               </h3>
-              <p className="text-gray-600 text-sm mt-1 truncate">
+              <p className=" text-sm mt-1 truncate">
                 Release Date: {new Date(game.releaseDate).toLocaleDateString()}
               </p>
               <div className="mt-2 flex items-center text-indigo-600 text-sm">

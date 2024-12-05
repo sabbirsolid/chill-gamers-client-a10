@@ -54,8 +54,12 @@ const MyReview = () => {
     );
   }
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full  border border-gray-200">
+    <div className=" border m-3 lg:m-10  rounded-xl">
+      <h2 className="text-xl md:text-2xl font-bold text-center my-6">
+        My Reviews
+      </h2>
+      <div className="">
+      <table className="min-w-full border  border-gray-200">
         <thead>
           <tr className=" text-sm md:text-base">
             <th className="px-4 py-2 md:px-6 md:py-3 text-left font-medium ">
@@ -116,6 +120,7 @@ const MyReview = () => {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };

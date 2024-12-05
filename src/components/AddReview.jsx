@@ -72,18 +72,18 @@ const AddReview = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+    <div className="min-h-screen  flex items-center justify-center ">
+      <div className=" p-8 rounded-lg border shadow-md w-full max-w-lg">
+        <h2 className="text-2xl font-bold  mb-6 text-center">
           Add New Review
         </h2>
 
-        <form onSubmit={handleSubmit}>
+        <form className="" onSubmit={handleSubmit}>
           {/* Game Cover URL */}
           <div className="mb-4">
             <label
               htmlFor="gameCover"
-              className="block text-gray-700 text-sm font-semibold mb-2"
+              className="block  text-sm font-semibold mb-2"
             >
               Game Cover URL
             </label>
@@ -100,7 +100,7 @@ const AddReview = () => {
           <div className="mb-4">
             <label
               htmlFor="gameTitle"
-              className="block text-gray-700 text-sm font-semibold mb-2"
+              className="block  text-sm font-semibold mb-2"
             >
               Game Title
             </label>
@@ -118,7 +118,7 @@ const AddReview = () => {
           <div className="mb-4">
             <label
               htmlFor="reviewDescription"
-              className="block text-gray-700 text-sm font-semibold mb-2"
+              className="block text-sm font-semibold mb-2"
             >
               Review Description
             </label>
@@ -136,7 +136,7 @@ const AddReview = () => {
           <div className="mb-4">
             <label
               htmlFor="rating"
-              className="block text-gray-700 text-sm font-semibold mb-2"
+              className="block  text-sm font-semibold mb-2"
             >
               Rating (1-10)
             </label>
@@ -156,7 +156,7 @@ const AddReview = () => {
           <div className="mb-4">
             <label
               htmlFor="publishingYear"
-              className="block text-gray-700 text-sm font-semibold mb-2"
+              className="block  text-sm font-semibold mb-2"
             >
               Publishing Year
             </label>
@@ -174,7 +174,7 @@ const AddReview = () => {
           <div className="mb-4">
             <label
               htmlFor="genre"
-              className="block text-gray-700 text-sm font-semibold mb-2"
+              className="block  text-sm font-semibold mb-2"
             >
               Genre
             </label>
@@ -197,7 +197,7 @@ const AddReview = () => {
           <div className="mb-4">
             <label
               htmlFor="userEmail"
-              className="block text-gray-700 text-sm font-semibold mb-2"
+              className="block  text-sm font-semibold mb-2"
             >
               User Email
             </label>
@@ -206,7 +206,7 @@ const AddReview = () => {
               id="userEmail"
               defaultValue={user?.email}
               readOnly
-              className="w-full px-4 py-2 border bg-gray-100 rounded-lg cursor-not-allowed"
+              className="w-full px-4 py-2 border  rounded-lg cursor-not-allowed"
             />
           </div>
 
@@ -214,7 +214,7 @@ const AddReview = () => {
           <div className="mb-4">
             <label
               htmlFor="userName"
-              className="block text-gray-700 text-sm font-semibold mb-2"
+              className="block  text-sm font-semibold mb-2"
             >
               User Name
             </label>
@@ -223,7 +223,7 @@ const AddReview = () => {
               id="userName"
               defaultValue={user?.displayName}
               readOnly
-              className="w-full px-4 py-2 border bg-gray-100 rounded-lg cursor-not-allowed"
+              className="w-full px-4 py-2 border rounded-lg cursor-not-allowed"
             />
           </div>
 
