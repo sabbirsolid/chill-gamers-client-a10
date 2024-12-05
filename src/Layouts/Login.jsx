@@ -38,6 +38,8 @@ const Login = () => {
     }
   };
 
+  
+
   const handleSignInWithGoogle = async () => {
     try {
       await signInWithGoogle();
@@ -58,12 +60,21 @@ const Login = () => {
       });
     }
   };
-  
+
+  if (loading) {
+    // Show a spinner while authentication state is being determined
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="loading loading-spinner text-info text-5xl"></div>
+      </div>
+    );
+  }
+
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
-          <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r">
+      <div className=" p-8 border rounded-xl shadow-lg w-full max-w-sm">
+          <h2 className="text-3xl font-semibold  mb-6 text-center">
             Login
           </h2>
           <form onSubmit={handleLogin}>
@@ -71,7 +82,7 @@ const Login = () => {
             <div className="mb-4">
               <label
                 htmlFor="email"
-                className="block text-gray-700 text-sm font-semibold mb-2"
+                className="block  text-sm font-semibold mb-2"
               >
                 Email
               </label>
@@ -89,7 +100,7 @@ const Login = () => {
             <div className="mb-4">
               <label
                 htmlFor="password"
-                className="block text-gray-700 text-sm font-semibold mb-2"
+                className="block text-sm font-semibold mb-2"
               >
                 Password
               </label>
@@ -143,7 +154,7 @@ const Login = () => {
           </button>
 
           {/* Signup Link */}
-          <p className="mt-6 text-center text-sm text-gray-600">
+          <p className="mt-6 text-center text-sm">
             Don't have an account?{" "}
             <a href="/signup" className="text-blue-500 hover:underline">
               Sign up

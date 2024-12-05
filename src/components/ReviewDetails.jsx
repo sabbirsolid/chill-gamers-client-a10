@@ -66,7 +66,7 @@ const ReviewDetails = () => {
 
   return (
     <div className="max-w-sm mx-auto mt-6"> {/* Added mt-6 for gap */}
-      <div className="bg-white shadow-lg rounded-md overflow-hidden flex flex-col h-full transform transition-transform hover:scale-105 duration-300">
+      <div className="shadow-lg rounded-md overflow-hidden flex flex-col h-full transform transition-transform hover:scale-105 duration-300">
         {/* Game Cover */}
         <div className="relative">
           <img
@@ -84,7 +84,7 @@ const ReviewDetails = () => {
         {/* Card Content */}
         <div className="p-3 space-y-2 flex-grow">
           {/* Reviewer Name */}
-          <p className="text-sm font-medium text-gray-700">
+          <p className="text-sm font-medium ">
             <strong>Reviewer:</strong> {review.name}
           </p>
           {/* Reviewer Email */}
@@ -92,19 +92,19 @@ const ReviewDetails = () => {
             <strong>Email:</strong> {review.email}
           </p>
           {/* Genre */}
-          <p className="text-sm text-gray-700">
+          <p className="text-sm ">
             <strong>Genre:</strong> {review.genre}
           </p>
           {/* Rating */}
-          <p className="text-sm text-gray-700">
+          <p className="text-sm ">
             <strong>Rating:</strong> {review.rating}/10
           </p>
           {/* Full Description (no truncation) */}
-          <p className="text-sm text-gray-600">{review.description}</p> {/* Removed truncate class */}
+          <p className="text-sm ">{review.description}</p> {/* Removed truncate class */}
         </div>
 
         {/* Add to Watch List Button */}
-        <div className="p-3 bg-gray-50">
+        <div className="p-3 ">
           <button
             className="w-full py-2 text-sm font-medium text-white bg-green-500 hover:bg-green-600 rounded focus:outline-none focus:ring focus:ring-green-300"
             onClick={handleWatchList}

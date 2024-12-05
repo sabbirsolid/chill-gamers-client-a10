@@ -36,13 +36,7 @@ const SignUp = () => {
       return;
     }
 
-    if (loading) {
-      return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-50">
-          <span className="loading loading-spinner text-info text-5xl"></span>
-        </div>
-      );
-    }
+    
 
     setError(""); // Clear error if the password is valid
 
@@ -69,6 +63,14 @@ const SignUp = () => {
       });
   };
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-gray-50">
+        <span className="loading loading-spinner text-info text-5xl"></span>
+      </div>
+    );
+  }
+
   const handleSignInWithGoogle = () => {
     signInWithGoogle()
       .then(() => {
@@ -86,13 +88,13 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
-        <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Sign Up</h2>
+    <div className="min-h-screen my-3 flex items-center justify-center bg-gradient-to-r">
+      <div className="border rounded-xl p-8 shadow-lg w-full max-w-sm">
+        <h2 className="text-3xl font-semibold  mb-6 text-center">Sign Up</h2>
         {error && <p className="text-red-600 mb-4 text-center">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="name" className="block text-gray-700 text-sm font-semibold mb-2">Full Name</label>
+            <label htmlFor="name" className="block  text-sm font-semibold mb-2">Full Name</label>
             <input
               type="text"
               name="name"
@@ -104,7 +106,7 @@ const SignUp = () => {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 text-sm font-semibold mb-2">Email</label>
+            <label htmlFor="email" className="block  text-sm font-semibold mb-2">Email</label>
             <input
               type="email"
               name="email"
@@ -115,7 +117,7 @@ const SignUp = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-semibold mb-2">PhotoURL</label>
+            <label className="block text-sm font-semibold mb-2">PhotoURL</label>
             <input
               type="photoURL"
               name="photoURL"
@@ -127,7 +129,7 @@ const SignUp = () => {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-700 text-sm font-semibold mb-2">Password</label>
+            <label htmlFor="password" className="block  text-sm font-semibold mb-2">Password</label>
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
@@ -149,7 +151,7 @@ const SignUp = () => {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="confirmPassword" className="block text-gray-700 text-sm font-semibold mb-2">Confirm Password</label>
+            <label htmlFor="confirmPassword" className="block  text-sm font-semibold mb-2">Confirm Password</label>
             <div className="relative">
               <input
                 type={showConfirmPassword ? "text" : "password"}
@@ -176,7 +178,7 @@ const SignUp = () => {
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300"
+            className="w-full bg-blue-600 text-white  py-3 rounded-lg hover:bg-blue-700 transition duration-300"
             disabled={loading}
           >
             Sign Up
@@ -213,7 +215,7 @@ const SignUp = () => {
           Sign up with Google
         </button>
 
-        <p className="mt-6 text-center text-sm text-gray-600">
+        <p className="mt-6 text-center text-sm">
           Already have an account?{" "}
           <Link to="/login" className="text-blue-500 hover:underline">
             Login here

@@ -72,9 +72,9 @@ const UpdateReview = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+    <div className="min-h-screen my-3 flex items-center justify-center ">
+      <div className=" p-8 rounded-xl border shadow-md w-full max-w-lg">
+        <h2 className="text-2xl font-bold  mb-6 text-center">
           Update your Review
         </h2>
 
@@ -83,7 +83,7 @@ const UpdateReview = () => {
           <div className="mb-4">
             <label
               htmlFor="gameCover"
-              className="block text-gray-700 text-sm font-semibold mb-2"
+              className="block  text-sm font-semibold mb-2"
             >
               Game Cover URL
             </label>
@@ -101,7 +101,7 @@ const UpdateReview = () => {
           <div className="mb-4">
             <label
               htmlFor="gameTitle"
-              className="block text-gray-700 text-sm font-semibold mb-2"
+              className="block  text-sm font-semibold mb-2"
             >
               Game Title
             </label>
@@ -120,7 +120,7 @@ const UpdateReview = () => {
           <div className="mb-4">
             <label
               htmlFor="reviewDescription"
-              className="block text-gray-700 text-sm font-semibold mb-2"
+              className="block text-sm font-semibold mb-2"
             >
               Review Description
             </label>
@@ -139,7 +139,7 @@ const UpdateReview = () => {
           <div className="mb-4">
             <label
               htmlFor="rating"
-              className="block text-gray-700 text-sm font-semibold mb-2"
+              className="block  text-sm font-semibold mb-2"
             >
               Rating (1-10)
             </label>
@@ -160,7 +160,7 @@ const UpdateReview = () => {
           <div className="mb-4">
             <label
               htmlFor="publishingYear"
-              className="block text-gray-700 text-sm font-semibold mb-2"
+              className="block  text-sm font-semibold mb-2"
             >
               Publishing Year
             </label>
@@ -179,7 +179,7 @@ const UpdateReview = () => {
           <div className="mb-4">
             <label
               htmlFor="genre"
-              className="block text-gray-700 text-sm font-semibold mb-2"
+              className="block  text-sm font-semibold mb-2"
             >
               Genre
             </label>
@@ -203,7 +203,7 @@ const UpdateReview = () => {
           <div className="mb-4">
             <label
               htmlFor="userEmail"
-              className="block text-gray-700 text-sm font-semibold mb-2"
+              className="block  text-sm font-semibold mb-2"
             >
               User Email
             </label>
@@ -212,7 +212,7 @@ const UpdateReview = () => {
               id="userEmail"
               defaultValue={user?.email}
               readOnly
-              className="w-full px-4 py-2 border bg-gray-100 rounded-lg cursor-not-allowed"
+              className="w-full px-4 py-2 border  rounded-lg cursor-not-allowed"
             />
           </div>
 
@@ -220,7 +220,7 @@ const UpdateReview = () => {
           <div className="mb-4">
             <label
               htmlFor="userName"
-              className="block text-gray-700 text-sm font-semibold mb-2"
+              className="block  text-sm font-semibold mb-2"
             >
               User Name
             </label>
@@ -229,7 +229,7 @@ const UpdateReview = () => {
               id="userName"
               defaultValue={user?.displayName}
               readOnly
-              className="w-full px-4 py-2 border bg-gray-100 rounded-lg cursor-not-allowed"
+              className="w-full px-4 py-2 border rounded-lg cursor-not-allowed"
             />
           </div>
 

@@ -1,34 +1,44 @@
-import React from "react";
-import sun from "./Sun.svg";
-import mon from "./Moon.svg";
+import React, { useState, useEffect } from "react";
 import "./DarkMode.css";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 const DarkMode = () => {
-  const setDark = () => {
-    document.querySelector("body").setAttribute("data-theme", "dark");
-    localStorage.setItem("selectedTheme", "dark");
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Set the initial theme based on localStorage
+  useEffect(() => {
+    const selectedTheme = localStorage.getItem("selectedTheme");
+    if (selectedTheme === "dark") {
+      document.body.setAttribute("data-theme", "dark");
+      setIsDarkMode(true);
+    } else {
+      document.body.setAttribute("data-theme", "light");
+      setIsDarkMode(false);
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    if (isDarkMode) {
+      // Switch to light mode
+      document.body.setAttribute("data-theme", "light");
+      localStorage.setItem("selectedTheme", "light");
+      setIsDarkMode(false);
+    } else {
+      // Switch to dark mode
+      document.body.setAttribute("data-theme", "dark");
+      localStorage.setItem("selectedTheme", "dark");
+      setIsDarkMode(true);
+    }
   };
-  const setLight = () => {
-    document.querySelector("body").setAttribute("data-theme", "light");
-    localStorage.setItem("selectedTheme", "light");
-  };
-  const selectedTheme = localStorage.getItem("selectedTheme");
-  if(selectedTheme === "dark"){
-    setDark()
-  }
-//   setDark();
-const toggleTheme = e => {
-    if(e.target.checked) setDark();
-    else setLight()
-}
+
   return (
     <div className="dark_mode">
-      <input className="dark_mode_input" type="checkbox" id="darkmode-toggle"
-      onChange={toggleTheme} />
-      <label className="dark_mode_label" for="darkmode-toggle">
-        {/* <img src={sun} alt="" />
-        <img src={mon} alt="" /> */}
-      </label>
+      <button
+        onClick={toggleTheme}
+        className="text-lg mt-6 rounded-full transition text-yellow-500 dark:text-gray-300"
+      >
+        {isDarkMode ? <FaSun /> : <FaMoon />}
+      </button>
     </div>
   );
 };

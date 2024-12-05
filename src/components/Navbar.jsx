@@ -78,19 +78,21 @@ const Navbar = () => {
     </>
   );
 
+  // Close the menu after logging out (for mobile view)
+  useEffect(() => {
+    if (!user) {
+      setIsMenuOpen(false); // Close menu when user logs out
+    }
+  }, [user]);
+
   return (
-    <nav className=" text-gray-800text-gray-200 shadow-lg">
-      <div className="container mx-auto flex items-center justify-between py-4 px-6">
+    <nav className="shadow-lg">
+      <div className="lg:container mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
-        <div className="text-2xl font-bold text-blue-500">
-          Chill Gamer
-        </div>
-        <DarkMode></DarkMode>
+        <div className="text-sm lg:text-2xl font-bold text-blue-500">Chill Gamer</div>
 
         {/* Right side for small screens: Hamburger + Login */}
         <div className="flex items-center space-x-4 md:hidden">
-         
-
           {/* User Info */}
           {user?.email ? (
             <div className="flex items-center space-x-3">
@@ -102,8 +104,15 @@ const Navbar = () => {
                     className="w-8 h-8 rounded-full border border-gray-300"
                     data-tooltip-id="user-tooltip"
                   />
-                  <Tooltip id="user-tooltip" place="top" effect="solid">
-                    {user.displayName || "User"}
+                  <Tooltip
+                    id="user-tooltip"
+                    place="top"
+                    effect="solid"
+                    interactive={true}
+                  >
+                    <div className="flex flex-col space-y-2">
+                      <span>{user.displayName || "User"}</span>
+                    </div>
                   </Tooltip>
                 </div>
               ) : (
@@ -111,7 +120,7 @@ const Navbar = () => {
               )}
               <button
                 onClick={handleLogOut}
-                className="hover:text-blue-500 px-3 py-1 rounded-md"
+                className="hover:text-blue-500 text-sm px-1 py-1 border border-gray-300 rounded-md  hover:bg-gray-300 transition-all"
               >
                 Sign Out
               </button>
@@ -119,7 +128,7 @@ const Navbar = () => {
           ) : (
             <Link
               to="/login"
-              className="hover:text-gray-800 border border-gray-300 px-3 py-1 rounded-md"
+              className="hover:text-blue-500 text-sm px-1 py-1 border border-gray-300 rounded-md  hover:bg-gray-300 transition-all"
             >
               Login
             </Link>
@@ -141,10 +150,13 @@ const Navbar = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
-                d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}
+                d={
+                  isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"
+                }
               />
             </svg>
           </button>
+          <DarkMode />
         </div>
 
         {/* Links for Desktop */}
@@ -152,8 +164,6 @@ const Navbar = () => {
 
         {/* User Info for Desktop */}
         <div className="hidden md:flex items-center space-x-4">
-         
-
           {user?.email ? (
             <div className="flex items-center space-x-3">
               {user.photoURL ? (
@@ -162,10 +172,17 @@ const Navbar = () => {
                     src={user.photoURL}
                     alt="User Avatar"
                     className="w-10 h-10 rounded-full border border-gray-300"
-                    data-tooltip-id="user-tooltip"
+                    data-tooltip-id="user-tooltip-desktop"
                   />
-                  <Tooltip id="user-tooltip" place="top" effect="solid">
-                    {user.displayName || "User"}
+                  <Tooltip
+                    id="user-tooltip-desktop"
+                    place="bottom"
+                    effect="solid"
+                    interactive={true}
+                  >
+                    <div className="flex flex-col space-y-2">
+                      <span>{user.displayName || "User"}</span>
+                    </div>
                   </Tooltip>
                 </div>
               ) : (
@@ -173,25 +190,26 @@ const Navbar = () => {
               )}
               <button
                 onClick={handleLogOut}
-                className="hover:text-blue-500 px-3 py-1 rounded-md"
+                className="hover:text-blue-500 text-sm px-1 py-1 border border-gray-300 rounded-md  hover:bg-gray-300 transition-all"
               >
-                Sign Out
+                Log Out
               </button>
             </div>
           ) : (
             <Link
               to="/login"
-              className="hover:text-gray-800 border border-gray-300 px-3 py-1 rounded-md"
+              className="hover:text-blue-500 text-sm px-1 py-1 border border-gray-300 rounded-md  hover:bg-gray-300 transition-all"
             >
               Login
             </Link>
           )}
+          <DarkMode />
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-gray-100">
+        <div className="md:hidden">
           <ul className="space-y-4 flex flex-col text-center py-4">{links}</ul>
         </div>
       )}
