@@ -4,6 +4,7 @@ import HighestRated from "../components/HighestRated";
 import TrendingGames from "../components/TrendingGames";
 import UpcomingReleases from "../components/UpcomingReleases";
 import { AuthContext } from "../Providers/AuthProvider";
+import NewReleases from "../components/NewReleases";
 
 
 
@@ -20,7 +21,9 @@ const HomeLayout = () => {
         <div className="py-10c space-x-5">
             <Banner></Banner>
             <HighestRated></HighestRated>
-            <TrendingGames></TrendingGames>
+            {/* <TrendingGames></TrendingGames>
+             */}
+             <NewReleases></NewReleases>
             <UpcomingReleases></UpcomingReleases>
         </div>
     );
