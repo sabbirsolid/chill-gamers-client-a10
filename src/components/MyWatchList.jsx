@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const MyWatchList = () => {
   const { user,loading } = useContext(AuthContext);
@@ -57,6 +58,9 @@ const MyWatchList = () => {
 
   return (
     <div className="overflow-x-auto m-3 lg:m-10 border rounded-xl">
+      <Helmet>
+          <title>My WatchList  | ChillGamers</title>
+        </Helmet>
       <h2 className="text-xl md:text-2xl font-bold text-center my-6">
         My Watch List
       </h2>

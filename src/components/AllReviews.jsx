@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const AllReviews = () => {
   const data = useLoaderData(); // Assuming data is being loaded initially
@@ -57,9 +58,10 @@ const AllReviews = () => {
 
   return (
     <div className="min-h-screen  py-10">
-      <h2 className="text-3xl font-bold text-center mb-6">
-        All Reviews
-      </h2>
+      <h2 className="text-3xl font-bold text-center mb-6">All Reviews</h2>
+      <Helmet>
+        <title>All Reviews | ChillGamers</title>
+      </Helmet>
 
       {/* Sorting and Filtering Options */}
       <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center space-y-4 sm:space-y-0 mb-6 px-4 md:px-8">
@@ -148,9 +150,7 @@ const AllReviews = () => {
                 <span className="ml-1">Rating: {review.rating}/10</span>
               </div>
               {/* Description */}
-              <p className=" text-xs line-clamp-3">
-                {review.description}
-              </p>
+              <p className=" text-xs line-clamp-3">{review.description}</p>
             </div>
             <div className="p-3  text-right">
               <Link

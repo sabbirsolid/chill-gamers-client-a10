@@ -9,7 +9,7 @@ const UpcomingReleases = () => {
     fetch("https://game-lens-server.vercel.app/upcoming")
       .then((res) => res.json())
       .then((data) => setUpcomingGames(data))
-      .catch((error) => console.error("Error fetching upcoming games:", error));
+      .catch((error) => alert("Error fetching upcoming games:", error));
   }, []);
 
   return (

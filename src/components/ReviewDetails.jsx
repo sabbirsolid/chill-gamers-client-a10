@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ReviewDetails = () => {
   const review = useLoaderData();
@@ -66,6 +67,9 @@ const ReviewDetails = () => {
 
   return (
     <div className="max-w-sm mx-auto mt-6"> {/* Added mt-6 for gap */}
+    <Helmet>
+          <title>Review Details  | ChillGamers</title>
+        </Helmet>
       <div className="shadow-lg rounded-md overflow-hidden flex flex-col h-full transform transition-transform hover:scale-105 duration-300">
         {/* Game Cover */}
         <div className="relative">

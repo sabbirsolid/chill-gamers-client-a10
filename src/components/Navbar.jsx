@@ -89,7 +89,7 @@ const Navbar = () => {
     <nav className="shadow-lg">
       <div className="lg:container mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
-        <div className="text-sm lg:text-2xl font-bold text-blue-500">Chill Gamer</div>
+        <div className="text-sm lg:text-2xl font-bold text-blue-500">ChillGamers</div>
 
         {/* Right side for small screens: Hamburger + Login */}
         <div className="flex items-center space-x-4 md:hidden">

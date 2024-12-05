@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AddReview = () => {
   const { user, loading } = useContext(AuthContext);
@@ -77,6 +78,9 @@ const AddReview = () => {
         <h2 className="text-2xl font-bold  mb-6 text-center">
           Add New Review
         </h2>
+        <Helmet>
+          <title>Add Review  | ChillGamers</title>
+        </Helmet>
 
         <form className="" onSubmit={handleSubmit}>
           {/* Game Cover URL */}

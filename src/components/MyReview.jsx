@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 const MyReview = () => {
   const { user,loading } = useContext(AuthContext);
   const [myReviews, setMyReview] = useState([]);
@@ -55,6 +56,9 @@ const MyReview = () => {
   }
   return (
     <div className=" border m-3 lg:m-10  rounded-xl">
+      <Helmet>
+          <title>My Reviews  | ChillGamers</title>
+        </Helmet>
       <h2 className="text-xl md:text-2xl font-bold text-center my-6">
         My Reviews
       </h2>

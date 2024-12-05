@@ -14,7 +14,7 @@ const NewReleases = () => {
     fetch("https://game-lens-server.vercel.app/newReleases")
       .then((res) => res.json())
       .then((data) => setNewReleases(data))
-      .catch((error) => console.error("Error fetching new releases:", error));
+      .catch((error) => alert("Error fetching new releases:", error));
   }, []);
 
   const handleAnimation = (direction) => {

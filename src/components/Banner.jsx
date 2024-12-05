@@ -1,6 +1,9 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import 'animate.css'; 
+import pic1 from "../assets/1.jpg"
+import pic2 from "../assets/2.jpg"
+import pic3 from "../assets/3.jpg"
 
 const Banner = () => {
   return (
@@ -40,29 +43,22 @@ const Banner = () => {
        
         <div className="lg:w-8/12 mx-auto object-cover animate__animated animate__fadeIn">
           <img
-            src="https://i.ibb.co.com/2SGbVqN/4.jpg"
+            src={pic1}
             alt="image 1"
             className="w-full lg:h-[350px] object-cover"
           />
         </div>
         <div className="lg:w-8/12 mx-auto object-cover animate__animated animate__fadeIn">
           <img
-            src="https://i.ibb.co.com/QpCcNxF/3.jpg"
+            src={pic2}
             alt="image 2"
             className="w-full lg:h-[350px] object-cover"
           />
         </div>
         <div className="lg:w-8/12 mx-auto object-cover animate__animated animate__fadeIn">
           <img
-            src="https://i.ibb.co.com/gy0fpVG/2.jpg"
+            src={pic3}
             alt="image 3"
-            className="w-full lg:h-[350px] object-cover"
-          />
-        </div>
-        <div className="lg:w-8/12 mx-auto object-cover animate__animated animate__fadeIn">
-          <img
-            src="https://i.ibb.co.com/3C7Jfr1/1.jpg "
-            alt="image 4"
             className="w-full lg:h-[350px] object-cover"
           />
         </div>

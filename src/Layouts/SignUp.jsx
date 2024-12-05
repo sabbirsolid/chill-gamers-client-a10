@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { auth } from "../Firebase/firebase.config";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
   const { createUserWithEmail, signInWithGoogle, loading } = useContext(AuthContext);
@@ -89,6 +90,9 @@ const SignUp = () => {
 
   return (
     <div className="min-h-screen my-3 flex items-center justify-center bg-gradient-to-r">
+      <Helmet>
+          <title>Sign Up  | ChillGamers</title>
+        </Helmet>
       <div className="border rounded-xl p-8 shadow-lg w-full max-w-sm">
         <h2 className="text-3xl font-semibold  mb-6 text-center">Sign Up</h2>
         {error && <p className="text-red-600 mb-4 text-center">{error}</p>}

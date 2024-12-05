@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const UpdateReview = () => {
   const loadedData = useLoaderData();
@@ -73,6 +74,9 @@ const UpdateReview = () => {
 
   return (
     <div className="min-h-screen my-3 flex items-center justify-center ">
+      <Helmet>
+          <title>Update Review  | ChillGamers</title>
+        </Helmet>
       <div className=" p-8 rounded-xl border shadow-md w-full max-w-lg">
         <h2 className="text-2xl font-bold  mb-6 text-center">
           Update your Review
