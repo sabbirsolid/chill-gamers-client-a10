@@ -1,15 +1,17 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import Swal from "sweetalert2";
+import DarkMode from "./DarkMode/DarkMode";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  // Handle logout
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -19,7 +21,7 @@ const Navbar = () => {
           title: "Sign Out successful",
           showConfirmButton: true,
         });
-        navigate("/"); 
+        navigate("/");
       })
       .catch((err) => {
         Swal.fire({
@@ -36,7 +38,7 @@ const Navbar = () => {
       <NavLink
         to="/"
         className={({ isActive }) =>
-          `hover:text-gray-300 ${isActive ? "text-yellow-400 font-semibold" : ""}`
+          `hover:text-blue-500 ${isActive ? "text-blue-600 font-semibold" : ""}`
         }
       >
         Home
@@ -44,7 +46,7 @@ const Navbar = () => {
       <NavLink
         to="/reviews"
         className={({ isActive }) =>
-          `hover:text-gray-300 ${isActive ? "text-yellow-400 font-semibold" : ""}`
+          `hover:text-blue-500 ${isActive ? "text-blue-600 font-semibold" : ""}`
         }
       >
         All Reviews
@@ -52,7 +54,7 @@ const Navbar = () => {
       <NavLink
         to="/private/addReviews"
         className={({ isActive }) =>
-          `hover:text-gray-300 ${isActive ? "text-yellow-400 font-semibold" : ""}`
+          `hover:text-blue-500 ${isActive ? "text-blue-600 font-semibold" : ""}`
         }
       >
         Add Reviews
@@ -60,7 +62,7 @@ const Navbar = () => {
       <NavLink
         to="/private/myReview"
         className={({ isActive }) =>
-          `hover:text-gray-300 ${isActive ? "text-yellow-400 font-semibold" : ""}`
+          `hover:text-blue-500 ${isActive ? "text-blue-600 font-semibold" : ""}`
         }
       >
         My Reviews
@@ -68,7 +70,7 @@ const Navbar = () => {
       <NavLink
         to="/private/gameWatchList"
         className={({ isActive }) =>
-          `hover:text-gray-300 ${isActive ? "text-yellow-400 font-semibold" : ""}`
+          `hover:text-blue-500 ${isActive ? "text-blue-600 font-semibold" : ""}`
         }
       >
         Game WatchList
@@ -77,13 +79,18 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="bg-gray-800 text-white shadow-lg">
+    <nav className=" text-gray-800text-gray-200 shadow-lg">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
-        <div className="text-2xl font-bold text-yellow-400">GameLens</div>
+        <div className="text-2xl font-bold text-blue-500">
+          Chill Gamer
+        </div>
+        <DarkMode></DarkMode>
 
         {/* Right side for small screens: Hamburger + Login */}
         <div className="flex items-center space-x-4 md:hidden">
+         
+
           {/* User Info */}
           {user?.email ? (
             <div className="flex items-center space-x-3">
@@ -104,7 +111,7 @@ const Navbar = () => {
               )}
               <button
                 onClick={handleLogOut}
-                className="hover:text-yellow-400 px-3 py-1 rounded-md"
+                className="hover:text-blue-500 px-3 py-1 rounded-md"
               >
                 Sign Out
               </button>
@@ -112,7 +119,7 @@ const Navbar = () => {
           ) : (
             <Link
               to="/login"
-              className="hover:text-gray-300 border border-gray-300 px-3 py-1 rounded-md"
+              className="hover:text-gray-800 border border-gray-300 px-3 py-1 rounded-md"
             >
               Login
             </Link>
@@ -124,7 +131,7 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <svg
-              className="w-6 h-6 text-white"
+              className="w-6 h-6 text-gray-200"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -134,9 +141,7 @@ const Navbar = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
-                d={
-                  isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"
-                }
+                d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}
               />
             </svg>
           </button>
@@ -147,6 +152,8 @@ const Navbar = () => {
 
         {/* User Info for Desktop */}
         <div className="hidden md:flex items-center space-x-4">
+         
+
           {user?.email ? (
             <div className="flex items-center space-x-3">
               {user.photoURL ? (
@@ -166,7 +173,7 @@ const Navbar = () => {
               )}
               <button
                 onClick={handleLogOut}
-                className="hover:text-yellow-400 px-3 py-1 rounded-md"
+                className="hover:text-blue-500 px-3 py-1 rounded-md"
               >
                 Sign Out
               </button>
@@ -174,7 +181,7 @@ const Navbar = () => {
           ) : (
             <Link
               to="/login"
-              className="hover:text-gray-300 border border-gray-300 px-3 py-1 rounded-md"
+              className="hover:text-gray-800 border border-gray-300 px-3 py-1 rounded-md"
             >
               Login
             </Link>
@@ -184,7 +191,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-gray-700">
+        <div className="md:hidden bg-gray-100">
           <ul className="space-y-4 flex flex-col text-center py-4">{links}</ul>
         </div>
       )}

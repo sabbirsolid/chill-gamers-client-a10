@@ -6,15 +6,15 @@ const UpcomingReleases = () => {
 
   useEffect(() => {
     // Fetch upcoming games from your backend or API
-    fetch("http://localhost:3000/upcoming")
+    fetch("https://game-lens-server.vercel.app/upcoming")
       .then((res) => res.json())
       .then((data) => setUpcomingGames(data))
       .catch((error) => console.error("Error fetching upcoming games:", error));
   }, []);
 
   return (
-    <div className="py-10 bg-gray-50">
-      <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6">
+    <div className="py-10 border rounded-xl">
+      <h2 className="text-2xl md:text-3xl font-bold text-center  mb-6">
         🚀 Upcoming Releases
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4 md:px-8">

@@ -55,22 +55,22 @@ const MyReview = () => {
   }
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full bg-white border border-gray-200">
+      <table className="min-w-full  border border-gray-200">
         <thead>
-          <tr className="bg-gray-100 text-sm md:text-base">
-            <th className="px-4 py-2 md:px-6 md:py-3 text-left font-medium text-gray-700">
+          <tr className=" text-sm md:text-base">
+            <th className="px-4 py-2 md:px-6 md:py-3 text-left font-medium ">
               Game Title
             </th>
-            <th className="px-4 py-2 md:px-6 md:py-3 text-left font-medium text-gray-700">
+            <th className="px-4 py-2 md:px-6 md:py-3 text-left font-medium ">
               Genre
             </th>
-            <th className="px-4 py-2 md:px-6 md:py-3 text-left font-medium text-gray-700">
+            <th className="px-4 py-2 md:px-6 md:py-3 text-left font-medium ">
               Rating
             </th>
-            <th className="px-4 py-2 md:px-6 md:py-3 text-left font-medium text-gray-700 hidden sm:table-cell">
+            <th className="px-4 py-2 md:px-6 md:py-3 text-left font-medium  hidden sm:table-cell">
               Email
             </th>
-            <th className="px-4 py-2 md:px-6 md:py-3 text-center font-medium text-gray-700">
+            <th className="px-4 py-2 md:px-6 md:py-3 text-center font-medium ">
               Actions
             </th>
           </tr>
@@ -82,19 +82,19 @@ const MyReview = () => {
               className="border-t hover:bg-gray-50 transition duration-150 text-sm md:text-base"
             >
               {/* Game Title */}
-              <td className="px-4 py-2 md:px-6 md:py-3 text-gray-800">
+              <td className="px-4 py-2 md:px-6 md:py-3 ">
                 {review.gameTitle}
               </td>
               {/* Genre */}
-              <td className="px-4 py-2 md:px-6 md:py-3 text-gray-600">
+              <td className="px-4 py-2 md:px-6 md:py-3 ">
                 {review.genre}
               </td>
               {/* Rating */}
-              <td className="px-4 py-2 md:px-6 md:py-3 text-gray-600">
+              <td className="px-4 py-2 md:px-6 md:py-3 ">
                 {review.rating}/10
               </td>
               {/* Email (hidden on small screens) */}
-              <td className="px-4 py-2 md:px-6 md:py-3 text-gray-600 hidden sm:table-cell">
+              <td className="px-4 py-2 md:px-6 md:py-3  hidden sm:table-cell">
                 {review.email}
               </td>
               {/* Actions */}

@@ -36,8 +36,8 @@ const NewReleases = () => {
   };
 
   return (
-    <div className="py-10 bg-gray-100 relative">
-      <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6 animate__animated animate__fadeInDown">
+    <div className="py-10 border rounded-xl relative">
+      <h2 className="text-2xl md:text-3xl font-bold text-center  mb-6 animate__animated animate__fadeInDown">
         🆕 New Releases
       </h2>
       <div className="flex justify-end px-4 md:px-8 mb-4">
@@ -103,13 +103,13 @@ const NewReleases = () => {
                 </p>
                 <div className="flex gap-2 mt-4">
                   <Link
-                    to={`/private/addReview`}
+                    to={`/private/addReviews`}
                     className="text-sm text-center bg-gradient-to-r from-green-400 to-green-600 text-white py-1 px-2 rounded-md hover:from-green-500 hover:to-green-700 transition"
                   >
                     Give Review
                   </Link>
                   <Link
-                    to={`/allreviews`}
+                    to={`/reviews`}
                     className="text-sm text-center bg-gradient-to-r from-indigo-400 to-indigo-600 text-white py-1 px-2 rounded-md hover:from-indigo-500 hover:to-indigo-700 transition"
                   >
                     Read Reviews

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FaStar } from "react-icons/fa"; // Importing the star icon
-
+import { FaStar } from "react-icons/fa";
 const HighestRated = () => {
   const [games, setGames] = useState([]);
 
@@ -15,9 +14,9 @@ const HighestRated = () => {
   }, []);
 
   return (
-    <div className="py-10 bg-white">
+    <div className="py-10 border rounded-xl">
       <div className="container mx-auto px-4 lg:px-12">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12 tracking-tight">
+        <h2 className="text-3xl font-bold text-center  mb-12 tracking-tight">
           Highest Rated Games
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">

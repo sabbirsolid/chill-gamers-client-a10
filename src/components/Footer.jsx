@@ -1,13 +1,13 @@
 const Footer = () => {
     return (
-      <footer className="bg-gray-900 text-gray-300 py-8">
+      <footer className=" text-gray-300 py-8">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* About Section */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4">About GameLens</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">About Chill Gamer</h3>
               <p>
-                GameLens is your trusted platform for honest and insightful reviews of the latest and greatest games. 
+                Chill Gamer is your trusted platform for honest and insightful reviews of the latest and greatest games. 
                 Join our community of gamers and share your experiences!
               </p>
             </div>
@@ -35,7 +35,7 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-semibold text-white mb-4">Contact Us</h3>
               <p>
-                <strong>Email:</strong> support@gamelens.com
+                <strong>Email:</strong> sabbir@gmail.com
               </p>
               <p>
                 <strong>Phone:</strong> +1 (555) 123-4567
@@ -51,7 +51,7 @@ const Footer = () => {
           {/* Copyright Section */}
           <div className="text-center text-sm">
             <p>
-              © {new Date().getFullYear()} GameLens. All rights reserved. 
+              © {new Date().getFullYear()} Chill Gamer. All rights reserved. 
             </p>
             <p>
               Designed with ❤️ by passionate gamers.
