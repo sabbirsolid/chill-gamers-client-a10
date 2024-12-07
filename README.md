@@ -24,5 +24,5 @@
   - Firebase
 
 ## Links
-- [ChillGamers Main Site](https://game-lens.web.app/)
-- [ChillGamers Alternative Link](https://game-lens.firebaseapp.com/)
+- [https://game-lens.web.app/](https://game-lens.web.app/)
+- Alternative:[https://game-lens.firebaseapp.com/](https://game-lens.firebaseapp.com/)
