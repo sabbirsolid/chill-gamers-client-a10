@@ -1,5 +1,4 @@
 import{ useState, useEffect } from "react";
-// import "./DarkMode.css";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { IoSunny } from "react-icons/io5";
 

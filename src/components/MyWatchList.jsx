@@ -10,7 +10,7 @@ const MyWatchList = () => {
 
   useEffect(() => {
     setIsLoading(true); // Start loading
-    fetch(`https://game-lens-server.vercel.app/watchlist`)
+    fetch(`https://game-lens-server.vercel.app/watchList`)
       .then((res) => res.json())
       .then((data) => {
         const userWatchList = data?.filter((item) => item.email === user?.email);
@@ -34,7 +34,7 @@ const MyWatchList = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://game-lens-server.vercel.app/watchlist/${id}`, {
+        fetch(`https://game-lens-server.vercel.app/watchList/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -25,14 +25,14 @@ const ReviewDetails = () => {
 
   useEffect(() => {
     setIsLoading(true); // Start loading
-    fetch(`https://game-lens-server.vercel.app/watchlist`)
+    fetch(`https://game-lens-server.vercel.app/watchList`)
       .then((res) => res.json())
       .then((data) => {
         setWatchList(data);
         setIsLoading(false); // Stop loading once data is fetched
       })
       .catch((error) => {
-        console.error("Error fetching watchlist:", error);
+        console.error("Error fetching watch List:", error);
         setIsLoading(false); // Stop loading even on error
       });
   }, [email]);
@@ -53,7 +53,7 @@ const ReviewDetails = () => {
       return;
     }
 
-    fetch("https://game-lens-server.vercel.app/watchlist", {
+    fetch("https://game-lens-server.vercel.app/watchList", {
       method: "POST",
       headers: {
         "content-type": "application/json",
