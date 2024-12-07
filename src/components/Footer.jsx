@@ -1,3 +1,5 @@
+import { FaFacebook, FaInstagram, FaReddit } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -19,18 +21,18 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 flex flex-col ">
-              <Link to="/" className="hover:text-blue-400 transition">
-                Home
-              </Link>
-              <Link to="/reviews" className="hover:text-blue-400 transition">
-                Reviews
-              </Link>
-              <Link to="/" className="hover:text-blue-400 transition">
-                About Us
-              </Link>
-              <Link to="/" className="hover:text-blue-400 transition">
-                Contact
-              </Link>
+              <a href="https://www.facebook.com/" target="_blank" className="hover:text-blue-400 flex items-center gap-1 transition">
+               <span><FaFacebook /></span> Facebook
+              </a>
+              <a href="https://www.instagram.com/" target="_blank" className="hover:text-blue-400 flex items-center gap-1 transition">
+              <FaInstagram />Instagram
+              </a>
+              <a href="https://x.com/?lang=en" target="_blank" className="hover:text-blue-400 flex items-center gap-1 transition">
+              <FaXTwitter /> X
+              </a>
+              <a href="https://www.reddit.com/?rdt=46727" target="_blank" className="hover:text-blue-400 flex items-center gap-1 transition">
+              <FaReddit /> Reddit
+              </a>
             </ul>
           </div>
 

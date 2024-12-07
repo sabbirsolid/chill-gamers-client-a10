@@ -43,7 +43,7 @@ const Banner = () => {
        
         <div className="lg:w-8/12 mx-auto object-cover animate__animated animate__fadeIn">
           <img
-            src={pic1}
+            src={pic3}
             alt="image 1"
             className="w-full lg:h-[350px] object-cover"
           />
@@ -57,7 +57,7 @@ const Banner = () => {
         </div>
         <div className="lg:w-8/12 mx-auto object-cover animate__animated animate__fadeIn">
           <img
-            src={pic3}
+            src={pic1}
             alt="image 3"
             className="w-full lg:h-[350px] object-cover"
           />
