@@ -43,8 +43,6 @@ const UpdateReview = () => {
       });
       return;
     }
-
-    // Proceeding with the update
     fetch(`https://game-lens-server.vercel.app/reviews/${loadedData._id}`, {
       method: "PATCH",
       headers: {

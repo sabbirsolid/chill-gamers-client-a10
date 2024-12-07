@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import "./DarkMode.css";
+import{ useState, useEffect } from "react";
+// import "./DarkMode.css";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { IoSunny } from "react-icons/io5";
 
 const DarkMode = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -35,9 +36,9 @@ const DarkMode = () => {
     <div className="dark_mode">
       <button
         onClick={toggleTheme}
-        className="text-lg mt-6 rounded-full transition text-yellow-500 dark:text-gray-300"
+        className="text-lg mt-2 rounded-full transition  dark:text-gray-300"
       >
-        {isDarkMode ? <FaSun /> : <FaMoon />}
+        {isDarkMode ? <span className="text-yellow-500"><IoSunny /></span>: <FaMoon/>}
       </button>
     </div>
   );

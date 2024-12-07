@@ -73,7 +73,7 @@ const AddReview = () => {
   }
 
   return (
-    <div className="min-h-screen  flex items-center justify-center ">
+    <div className="min-h-screen my-10 mx-3 flex items-center justify-center ">
       <div className=" p-8 rounded-lg border shadow-md w-full max-w-lg">
         <h2 className="text-2xl font-bold  mb-6 text-center">
           Add New Review

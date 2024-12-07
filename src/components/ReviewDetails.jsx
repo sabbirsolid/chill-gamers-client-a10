@@ -8,6 +8,7 @@ const ReviewDetails = () => {
   const review = useLoaderData();
   const { user } = useContext(AuthContext);
   const [watchList, setWatchList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // State to manage loading spinner
 
   const email = user.email;
   const name = user.displayName;
@@ -23,9 +24,17 @@ const ReviewDetails = () => {
   };
 
   useEffect(() => {
+    setIsLoading(true); // Start loading
     fetch(`https://game-lens-server.vercel.app/watchlist`)
       .then((res) => res.json())
-      .then((data) => setWatchList(data));
+      .then((data) => {
+        setWatchList(data);
+        setIsLoading(false); // Stop loading once data is fetched
+      })
+      .catch((error) => {
+        console.error("Error fetching watchlist:", error);
+        setIsLoading(false); // Stop loading even on error
+      });
   }, [email]);
 
   const handleWatchList = () => {
@@ -65,23 +74,31 @@ const ReviewDetails = () => {
       });
   };
 
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <div className="loading loading-spinner text-info text-5xl"></div>
+      </div>
+    );
+  }
+
   return (
-    <div className="max-w-sm mx-auto mt-6"> {/* Added mt-6 for gap */}
-    <Helmet>
-          <title>Review Details  | ChillGamers</title>
-        </Helmet>
-      <div className="shadow-lg rounded-md overflow-hidden flex flex-col h-full transform transition-transform hover:scale-105 duration-300">
+    <div className="max-w-lg mx-auto my-5">
+      <Helmet>
+        <title>Review Details | ChillGamers</title>
+      </Helmet>
+      <h1 className="font-bold text-3xl text-center my-3">Review Details</h1>
+      <div className="shadow-lg rounded-md overflow-hidden flex flex-col h-full transform transition-transform hover:scale-105 mx-5 duration-300">
+        
         {/* Game Cover */}
         <div className="relative">
           <img
             src={review.gameCoverUrl}
             alt={review.gameTitle}
-            className="w-full h-32 object-cover"
+            className="w-full h-40 lg:h-56 object-cover"
           />
           <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent text-white px-4 py-2">
-            <h3 className="text-md font-semibold truncate">
-              {review.gameTitle}
-            </h3>
+            <h3 className="text-md font-semibold truncate">{review.gameTitle}</h3>
           </div>
         </div>
 
@@ -104,7 +121,7 @@ const ReviewDetails = () => {
             <strong>Rating:</strong> {review.rating}/10
           </p>
           {/* Full Description (no truncation) */}
-          <p className="text-sm ">{review.description}</p> {/* Removed truncate class */}
+          <p className="text-sm ">{review.description}</p>
         </div>
 
         {/* Add to Watch List Button */}

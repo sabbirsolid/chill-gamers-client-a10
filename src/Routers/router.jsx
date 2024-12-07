@@ -44,7 +44,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/private/gameWatchList",
+    path: "/private/myWatchList",
     element: (
       <PrivateRoute>
         <MyWatchList></MyWatchList>

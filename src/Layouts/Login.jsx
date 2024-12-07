@@ -1,17 +1,14 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
   const { logIn, signInWithGoogle, loading } = useContext(AuthContext);
   const navigate = useNavigate();
-  const location = useLocation();
-
-  // Capture the intended route or default to "/"
-  const from = location.state?.from?.pathname || "/";
-
+  const location = useLocation()
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -27,8 +24,7 @@ const Login = () => {
         title: "You Logged in successfully!",
         showConfirmButton: true,
       });
-      navigate(from, { replace: true });
-      // location?.state? location.state : "/"; // Redirect to the intended route;
+      navigate(location?.state? location.state : "/")
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -50,8 +46,7 @@ const Login = () => {
         title: "You Logged in successfully!",
         showConfirmButton: true,
       });
-      navigate(from, { replace: true });
-      // location?.state? location.state : navigate('/');
+      navigate(location?.state? location.state : "/")
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -63,7 +58,6 @@ const Login = () => {
   };
 
   if (loading) {
-    // Show a spinner while authentication state is being determined
     return (
       <div className="flex justify-center items-center min-h-screen">
         <div className="loading loading-spinner text-info text-5xl"></div>
@@ -73,7 +67,7 @@ const Login = () => {
 
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r">
+    <div className="min-h-screen flex m-3 items-center justify-center bg-gradient-to-r">
       <Helmet>
           <title>Login  | ChillGamers</title>
         </Helmet>
@@ -120,12 +114,7 @@ const Login = () => {
 
             {/* Forgot Password Link */}
             <div className="mb-6 text-right">
-              <a
-                href="/forgot-password"
-                className="text-sm text-blue-500 hover:underline"
-              >
-                Forgot Password?
-              </a>
+            <Link to="/forgot-password" className="text-sm text-blue-500 hover:underline">Forgot Password?</Link>
             </div>
 
             {/* Login Button */}
@@ -140,20 +129,9 @@ const Login = () => {
           {/* Google Login Button */}
           <button
             onClick={handleSignInWithGoogle}
-            className="w-full flex items-center justify-center bg-gray-100 text-gray-700 py-3 rounded-lg hover:bg-gray-200 transition mt-4"
+            className="w-full gap-1 flex items-center justify-center bg-gray-100 text-gray-700 py-3 rounded-lg hover:bg-gray-200 transition mt-4"
           >
-            <svg
-              className="w-5 h-5 mr-2"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              {/* Google Icon Paths */}
-              <path d="..." fill="#4285F4" />
-              <path d="..." fill="#34A853" />
-              <path d="..." fill="#FBBC05" />
-              <path d="..." fill="#EA4335" />
-            </svg>
+           <span><FaGoogle></FaGoogle></span>
             Sign in with Google
           </button>
 

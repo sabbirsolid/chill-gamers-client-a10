@@ -68,12 +68,12 @@ const Navbar = () => {
         My Reviews
       </NavLink>
       <NavLink
-        to="/private/gameWatchList"
+        to="/private/myWatchList"
         className={({ isActive }) =>
           `hover:text-blue-500 ${isActive ? "text-blue-600 font-semibold" : ""}`
         }
       >
-        Game WatchList
+        My WatchList
       </NavLink>
     </>
   );
@@ -81,7 +81,7 @@ const Navbar = () => {
   // Close the menu after logging out (for mobile view)
   useEffect(() => {
     if (!user) {
-      setIsMenuOpen(false); // Close menu when user logs out
+      setIsMenuOpen(false); 
     }
   }, [user]);
 
