@@ -18,7 +18,7 @@ const MyWatchList = () => {
         setIsLoading(false); // Stop loading once data is fetched
       })
       .catch((error) => {
-        console.error("Error fetching watchlist:", error);
+        console.error("Error fetching watch List:", error);
         setIsLoading(false); // Stop loading even on error
       });
   }, [user?.email]);

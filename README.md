@@ -1,8 +1,28 @@
-# React + Vite
+# ChillGamers
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+**ChillGamers** is a dynamic single-page website dedicated to providing comprehensive reviews of the latest video games. Whether you're an avid gamer or just a casual player, ChillGamers offers detailed reviews, user ratings, and the latest gaming news. Our platform allows users to log in, sign up, give reviews, see reviews, update reviews, and save games to their watchlist. Stay updated with upcoming games and new releases, all in one place.
 
-Currently, two official plugins are available:
+## Features
+- **User Authentication**: Log in and sign up using Firebase.
+- **Game Reviews**: Give, see, and update reviews for your favorite games.
+- **Watchlist**: Save games to your watchlist for easy access later.
+- **Upcoming Games & New Releases**: Stay updated with the latest and upcoming games.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- **Frontend**: 
+  - React
+  - React Router
+  - JavaScript
+  - Tailwind CSS
+- **Backend**: 
+  - Express.js
+  - Node.js
+- **Database**: 
+  - MongoDB
+- **User Authentication**:
+  - Firebase
+
+## Links
+- [ChillGamers Main Site](https://game-lens.web.app/)
+- [ChillGamers Alternative Link](https://game-lens.firebaseapp.com/)
