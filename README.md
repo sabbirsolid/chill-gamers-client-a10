@@ -15,6 +15,11 @@
   - React Router
   - JavaScript
   - Tailwind CSS
+  - animate.css
+  - react-fast-marquee
+  - react-helmet-async
+  - react-icons
+  - react-tooltip
 - **Backend**: 
   - Express.js
   - Node.js
@@ -24,5 +29,5 @@
   - Firebase
 
 ## Links
-- [https://game-lens.web.app/](https://game-lens.web.app/)
-- Alternative:[https://game-lens.firebaseapp.com/](https://game-lens.firebaseapp.com/)
+- [ChillGamers Main Site](https://game-lens.web.app/)
+- [ChillGamers Alternative Link](https://game-lens.firebaseapp.com/)
