@@ -55,8 +55,8 @@ const Footer = () => {
 
         {/* Copyright Section */}
         <div className="text-center text-sm">
-          <p>© {new Date().getFullYear()} ChillGamers. All rights reserved.</p>
-          <p>Designed with ❤️ by passionate gamers.</p>
+          <p>© {new Date().getFullYear()} ChillGamers. All Rights Reserved.</p>
+          <p>Designed with ❤️ by Passionate Gamers.</p>
         </div>
       </div>
     </footer>

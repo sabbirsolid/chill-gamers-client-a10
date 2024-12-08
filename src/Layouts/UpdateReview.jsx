@@ -94,7 +94,7 @@ const UpdateReview = () => {
               defaultValue={gameCoverUrl}
               name="gameCoverUrl"
               placeholder="Enter game cover image URL"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
               required
             />
           </div>
@@ -113,7 +113,7 @@ const UpdateReview = () => {
               id="gameTitle"
               name="gameTitle"
               placeholder="Enter game title"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
               required
             />
           </div>
@@ -132,7 +132,7 @@ const UpdateReview = () => {
               name="description"
               placeholder="Write your detailed review"
               rows="4"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
               required
             ></textarea>
           </div>
@@ -153,7 +153,7 @@ const UpdateReview = () => {
               placeholder="Enter rating (1-10)"
               min="1"
               max="10"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
               required
             />
           </div>
@@ -172,7 +172,7 @@ const UpdateReview = () => {
               id="publishingYear"
               name="year"
               placeholder="Enter publishing year (e.g., 2023)"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
               required
             />
           </div>
@@ -189,7 +189,7 @@ const UpdateReview = () => {
               id="genre"
               name="genre"
               defaultValue={genre}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
               required
             >
               <option value="">Select Genre</option>
@@ -238,7 +238,7 @@ const UpdateReview = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
+            className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition"
           >
             Update
           </button>

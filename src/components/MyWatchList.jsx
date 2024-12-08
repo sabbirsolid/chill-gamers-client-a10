@@ -6,20 +6,19 @@ import { Helmet } from "react-helmet-async";
 const MyWatchList = () => {
   const { user } = useContext(AuthContext);
   const [myWatchList, setMyWatchList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // State to manage loading spinner
+  const [isLoading, setIsLoading] = useState(true); 
 
   useEffect(() => {
-    setIsLoading(true); // Start loading
+    setIsLoading(true); 
     fetch(`https://game-lens-server.vercel.app/watchList`)
       .then((res) => res.json())
       .then((data) => {
         const userWatchList = data?.filter((item) => item.email === user?.email);
         setMyWatchList(userWatchList);
-        setIsLoading(false); // Stop loading once data is fetched
+        setIsLoading(false); 
       })
-      .catch((error) => {
-        console.error("Error fetching watch List:", error);
-        setIsLoading(false); // Stop loading even on error
+      .catch(() => {
+        setIsLoading(false); 
       });
   }, [user?.email]);
 

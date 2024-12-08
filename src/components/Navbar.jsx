@@ -38,7 +38,7 @@ const Navbar = () => {
       <NavLink
         to="/"
         className={({ isActive }) =>
-          `hover:text-blue-500 ${isActive ? "text-blue-600 font-semibold" : ""}`
+          `hover:text-green-500 ${isActive ? "text-green-600 font-semibold" : ""}`
         }
       >
         Home
@@ -46,7 +46,7 @@ const Navbar = () => {
       <NavLink
         to="/reviews"
         className={({ isActive }) =>
-          `hover:text-blue-500 ${isActive ? "text-blue-600 font-semibold" : ""}`
+          `hover:text-green-500 ${isActive ? "text-green-600 font-semibold" : ""}`
         }
       >
         All Reviews
@@ -54,7 +54,7 @@ const Navbar = () => {
       <NavLink
         to="/private/addReviews"
         className={({ isActive }) =>
-          `hover:text-blue-500 ${isActive ? "text-blue-600 font-semibold" : ""}`
+          `hover:text-green-500 ${isActive ? "text-green-600 font-semibold" : ""}`
         }
       >
         Add Reviews
@@ -62,7 +62,7 @@ const Navbar = () => {
       <NavLink
         to="/private/myReview"
         className={({ isActive }) =>
-          `hover:text-blue-500 ${isActive ? "text-blue-600 font-semibold" : ""}`
+          `hover:text-green-500 ${isActive ? "text-green-600 font-semibold" : ""}`
         }
       >
         My Reviews
@@ -70,7 +70,7 @@ const Navbar = () => {
       <NavLink
         to="/private/myWatchList"
         className={({ isActive }) =>
-          `hover:text-blue-500 ${isActive ? "text-blue-600 font-semibold" : ""}`
+          `hover:text-green-500 ${isActive ? "text-green-600 font-semibold" : ""}`
         }
       >
         My WatchList
@@ -89,7 +89,12 @@ const Navbar = () => {
     <nav className="shadow-lg">
       <div className="lg:container mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
-        <div className="text-sm lg:text-2xl font-bold text-blue-500">ChillGamers</div>
+        <div 
+  className="text-sm lg:text-2xl font-bold text-green-600 hover:text-lime-500 transition duration-300"
+>
+  ChillGamers
+</div>
+
 
         {/* Right side for small screens: Hamburger + Login */}
         <div className="flex items-center space-x-4 md:hidden">
@@ -120,7 +125,7 @@ const Navbar = () => {
               )}
               <button
                 onClick={handleLogOut}
-                className="hover:text-blue-500 text-sm px-1 py-1 border border-gray-300 rounded-md  hover:bg-gray-300 transition-all"
+                className="hover:text-green-500 text-sm px-1 py-1 border border-gray-300 rounded-md  hover:bg-gray-300 transition-all"
               >
                 Sign Out
               </button>
@@ -128,7 +133,7 @@ const Navbar = () => {
           ) : (
             <Link
               to="/login"
-              className="hover:text-blue-500 text-sm px-1 py-1 border border-gray-300 rounded-md  hover:bg-gray-300 transition-all"
+              className="hover:text-green-500 text-sm px-1 py-1 border border-gray-300 rounded-md  hover:bg-gray-300 transition-all"
             >
               Login
             </Link>
@@ -190,7 +195,7 @@ const Navbar = () => {
               )}
               <button
                 onClick={handleLogOut}
-                className="hover:text-blue-500 text-sm px-1 py-1 border border-gray-300 rounded-md  hover:bg-gray-300 transition-all"
+                className="hover:text-green-500 text-sm px-1 py-1 border border-gray-300 rounded-md  hover:bg-gray-100 transition-all"
               >
                 Log Out
               </button>
@@ -198,7 +203,7 @@ const Navbar = () => {
           ) : (
             <Link
               to="/login"
-              className="hover:text-blue-500 text-sm px-1 py-1 border border-gray-300 rounded-md  hover:bg-gray-300 transition-all"
+              className="hover:text-green-500 text-sm px-1 py-1 border border-gray-300 rounded-md  hover:bg-gray-100 transition-all"
             >
               Login
             </Link>

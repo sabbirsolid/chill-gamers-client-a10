@@ -8,7 +8,7 @@ const ReviewDetails = () => {
   const review = useLoaderData();
   const { user } = useContext(AuthContext);
   const [watchList, setWatchList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // State to manage loading spinner
+  const [isLoading, setIsLoading] = useState(true); 
 
   const email = user.email;
   const name = user.displayName;
@@ -24,16 +24,15 @@ const ReviewDetails = () => {
   };
 
   useEffect(() => {
-    setIsLoading(true); // Start loading
+    setIsLoading(true); 
     fetch(`https://game-lens-server.vercel.app/watchList`)
       .then((res) => res.json())
       .then((data) => {
         setWatchList(data);
-        setIsLoading(false); // Stop loading once data is fetched
+        setIsLoading(false); 
       })
-      .catch((error) => {
-        console.error("Error fetching watch List:", error);
-        setIsLoading(false); // Stop loading even on error
+      .catch(() => {
+        setIsLoading(false); 
       });
   }, [email]);
 

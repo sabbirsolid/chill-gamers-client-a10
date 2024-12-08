@@ -6,19 +6,19 @@ import { Helmet } from "react-helmet-async";
 const AllReviews = () => {
   const data = useLoaderData();
   const [reviews, setReviews] = useState([]);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
   const [selectedGenre, setSelectedGenre] = useState("");
   const [sortCriteria, setSortCriteria] = useState("rating");
   const [sortOrder, setSortOrder] = useState("asc");
-  const [searchQuery, setSearchQuery] = useState(""); 
+  const [searchQuery, setSearchQuery] = useState("");
 
   const genres = ["Action", "RPG", "Adventure", "Sports", "Puzzle", "Shooter"];
 
   useEffect(() => {
     setTimeout(() => {
-      setReviews(data); 
+      setReviews(data);
       setLoading(false);
-    }, 500); 
+    }, 500);
   }, [data]);
 
   const handleGenreChange = (e) => {
@@ -79,7 +79,7 @@ const AllReviews = () => {
             placeholder="Search by game title..."
             value={searchQuery}
             onChange={handleSearchChange}
-            className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full sm:w-auto"
+            className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 w-full sm:w-auto"
           />
         </div>
 
@@ -89,7 +89,7 @@ const AllReviews = () => {
             id="genre"
             value={selectedGenre}
             onChange={handleGenreChange}
-            className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full sm:w-auto"
+            className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 w-full sm:w-auto"
           >
             <option value="">All Genres</option>
             {genres.map((genre, index) => (
@@ -107,7 +107,7 @@ const AllReviews = () => {
               id="sortCriteria"
               value={sortCriteria}
               onChange={handleSortChange}
-              className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full sm:w-auto"
+              className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 w-full sm:w-auto"
             >
               <option value="rating">Rating</option>
               <option value="year">Year</option>
@@ -118,7 +118,7 @@ const AllReviews = () => {
               id="sortOrder"
               value={sortOrder}
               onChange={handleOrderChange}
-              className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full sm:w-auto"
+              className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 w-full sm:w-auto"
             >
               <option value="asc">Ascending</option>
               <option value="desc">Descending</option>
@@ -158,7 +158,7 @@ const AllReviews = () => {
             <div className="p-3 text-right">
               <Link
                 to={`/review/${review._id}`}
-                className="px-4 py-2 text-xs text-white bg-gradient-to-r from-teal-400 via-blue-500 to-purple-600 hover:from-teal-500 hover:via-blue-600 hover:to-purple-700 rounded-md focus:outline-none focus:ring focus:ring-blue-300 transition-all"
+                className="px-4 py-2 text-xs text-white bg-green-500 hover:bg-green-600 rounded-md focus:outline-none focus:ring focus:ring-green-300 transition-all"
               >
                 View Details
               </Link>

@@ -18,8 +18,7 @@ const MyReview = () => {
         setMyReviews(userReviews);
         setIsLoading(false); // Stop loading once data is fetched
       })
-      .catch((error) => {
-        console.error("Error fetching reviews:", error);
+      .catch(() => {
         setIsLoading(false); // Stop loading even on error
       });
   }, [user?.email]);
