@@ -11,7 +11,7 @@ const Banner = () => {
       <Carousel
         infiniteLoop
         useKeyboardArrows
-        autoPlay={false}
+        autoPlay={true}
         showThumbs={false}
         showStatus={false}
         showIndicators={true}

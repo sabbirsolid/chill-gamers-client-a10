@@ -10,6 +10,7 @@ import AllReviews from "../components/AllReviews";
 import ReviewDetails from "../components/ReviewDetails";
 import MyWatchList from "../components/MyWatchList";
 import UpdateReview from "../Layouts/UpdateReview";
+import Error from "../components/Error";
 
 const router = createBrowserRouter([
   {
@@ -81,7 +82,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <Error></Error>,
+    element: <Error></Error>
   },
 ]);
 
