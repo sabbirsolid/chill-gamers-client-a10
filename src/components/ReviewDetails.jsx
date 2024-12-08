@@ -20,7 +20,7 @@ const ReviewDetails = () => {
     rating,
     description,
     gameTitle,
-    gameCoverUrl,
+    gameCoverUrl
   };
 
   useEffect(() => {
@@ -78,7 +78,7 @@ const ReviewDetails = () => {
       <div className="min-h-screen flex justify-center items-center">
         <div className="loading loading-spinner text-info text-5xl"></div>
       </div>
-    );
+    ); 
   }
 
   return (
@@ -124,17 +124,16 @@ const ReviewDetails = () => {
         </div>
 
         {/* Add to Watch List Button */}
-        <div className="p-3 ">
+        <div className="p-3">
           <button
             className="w-full py-2 text-sm font-medium text-white bg-green-500 hover:bg-green-600 rounded focus:outline-none focus:ring focus:ring-green-300"
             onClick={handleWatchList}
-          >
-            Add to Watch List
+          >Add to Watch List
           </button>
         </div>
       </div>
     </div>
-  );
+    );
 };
 
 export default ReviewDetails;

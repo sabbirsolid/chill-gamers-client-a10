@@ -19,15 +19,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomeLayout></HomeLayout>,
+        element: <HomeLayout></HomeLayout>
       },
       {
         path: "/login",
-        element: <Login></Login>,
+        element: <Login></Login>
       },
       {
         path: "/signup",
-        element: <SignUp></SignUp>,
+        element: <SignUp></SignUp>
       },
       {
         path: "/reviews",
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
     path: "/review/:id",
     element: (
       <PrivateRoute>
-        <ReviewDetails></ReviewDetails>,
+        <ReviewDetails></ReviewDetails>
       </PrivateRoute>
     ),
     loader: ({ params }) =>
@@ -82,7 +82,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <Error></Error>
+    element: <Error></Error>,
   },
 ]);
 
