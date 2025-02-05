@@ -10,6 +10,8 @@ Users can:
 ✅ **Save games to their watchlist**  
 ✅ **Stay updated on upcoming releases**  
 
+🔗 **Live Demo:** [https://game-lens.web.app/)  
+
 ![ChillGamers Screenshot](https://i.ibb.co.com/pBGDNMGD/Screenshot-2025-02-05-165008.png)  
 
 ## 📖 Table of Contents  
