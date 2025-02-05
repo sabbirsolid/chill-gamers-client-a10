@@ -1,6 +1,4 @@
-Here’s a well-structured `README.md` for **ChillGamers**:  
 
----
 
 # 🎮 ChillGamers  
 
@@ -13,7 +11,7 @@ Users can:
 ✅ **Save games to their watchlist**  
 ✅ **Stay updated on upcoming releases**  
 
-![ChillGamers Screenshot]()  
+![ChillGamers Screenshot](https://i.ibb.co.com/7dyFsVTB/Screenshot-172.png)  
 
 ## 📖 Table of Contents  
 - [Features](#features)  
