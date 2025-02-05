@@ -1,5 +1,4 @@
 
-
 # 🎮 ChillGamers  
 
 **ChillGamers** is a dynamic single-page website dedicated to providing in-depth reviews of the latest video games. Whether you're a hardcore gamer or just a casual player, our platform offers detailed game reviews, user ratings, and the latest gaming news.  
@@ -11,7 +10,7 @@ Users can:
 ✅ **Save games to their watchlist**  
 ✅ **Stay updated on upcoming releases**  
 
-![ChillGamers Screenshot](https://i.ibb.co.com/7dyFsVTB/Screenshot-172.png)  
+![ChillGamers Screenshot](https://i.ibb.co.com/pBGDNMGD/Screenshot-2025-02-05-165008.png)  
 
 ## 📖 Table of Contents  
 - [Features](#features)  
