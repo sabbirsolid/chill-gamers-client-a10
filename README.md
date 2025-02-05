@@ -13,7 +13,7 @@ Users can:
 ✅ **Save games to their watchlist**  
 ✅ **Stay updated on upcoming releases**  
 
-![ChillGamers Screenshot](https://i.ibb.co.com/7dyFsVTB/Screenshot-172.png)  
+![ChillGamers Screenshot]()  
 
 ## 📖 Table of Contents  
 - [Features](#features)  
